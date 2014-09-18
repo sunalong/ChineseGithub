@@ -31,6 +31,7 @@ import java.util.Set;
 
 /**
  * Pager adapter for a user's different views
+ * HomeActivity页的ViewPager的Adapter
  */
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
@@ -58,6 +59,11 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
+        /*
+         *第一个Fragment:
+         * 若是默认用户，则为用户接收到的新鲜事的Fragment
+         * 否则，为组织接收到的新鲜事的Fragment
+         */
         case 0:
             return defaultUser ? new UserReceivedNewsFragment()
                     : new OrganizationNewsFragment();

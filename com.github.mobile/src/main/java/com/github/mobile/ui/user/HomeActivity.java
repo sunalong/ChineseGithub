@@ -297,6 +297,10 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
         return this;
     }
 
+    /*
+     *覆写父类TabPagerActivity的创建Adapter的方法
+     *此时为HomeActivity创建了ViewPager的具体界面
+     */
     @Override
     protected HomePagerAdapter createAdapter() {
         return new HomePagerAdapter(this, isDefaultUser);
