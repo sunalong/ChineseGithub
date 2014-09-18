@@ -99,6 +99,9 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
         getSupportLoaderManager().initLoader(0, null, this);
     }
 
+    /**
+     * 重新加载用户或者组织的数据
+     */
     private void reloadOrgs() {
         getSupportLoaderManager().restartLoader(0, null,
                 new LoaderCallbacks<List<User>>() {
@@ -123,6 +126,9 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
                         if (view == null)
                             return;
 
+                        /**
+                         * 数据加载完成后设置组织/用户 信息
+                         */
                         view.post(new Runnable() {
 
                             @Override
@@ -140,6 +146,9 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
                 });
     }
 
+    /**
+     *当HomeActivityonResume时，若不是默认的用户，则重新加载数据
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -165,6 +174,10 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     private void setOrg(User org) {
         Log.d(TAG, "setOrg : " + org.getLogin());
 
+        /**
+         * 封闭的sharedProfercnces,将值传进来即可，内部已经commit了。较简单
+         * 抽取出为工具类，搭框架时使用
+         */
         PreferenceUtils.save(sharedPreferences.edit().putInt(PREF_ORG_ID,
                 org.getId()));
 
@@ -289,13 +302,17 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
         return new HomePagerAdapter(this, isDefaultUser);
     }
 
+    /*
+     *由TabPagerActivity继承而来
+     *为每个Tab设置名字
+     */
     @Override
     protected String getIcon(int position) {
         switch (position) {
         case 0:
-            return ICON_NEWS;
+            return ICON_NEWS;//新鲜事
         case 1:
-            return ICON_PUBLIC;
+            return ICON_PUBLIC;//版本库
         case 2:
             return isDefaultUser ? ICON_WATCH : ICON_TEAM;
         case 3:

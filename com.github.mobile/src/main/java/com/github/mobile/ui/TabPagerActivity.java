@@ -35,7 +35,7 @@ import com.github.mobile.util.TypefaceUtils;
 
 /**
  * Activity with tabbed pages
- *
+ *注意Adapter的声明（protected V adapter;）
  * @param <V>
  */
 public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider>
@@ -92,7 +92,7 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
 
     /**
      * Get icon for position
-     *
+     *为每个标签设置名字，由子类覆写
      * @param position
      * @return icon
      */
@@ -142,6 +142,11 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
         }
     }
 
+    /**
+     * ①：初始化adapter
+     * ②：更新Menu菜单
+     * ③：为ViewPager设置adapter
+     */
     private void createPager() {
         adapter = createAdapter();
         invalidateOptionsMenu();
@@ -149,12 +154,18 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
     }
 
     /**
-     * Create tab using information from current adapter
+     * Create tab using information from current adapter<br>
+     * 根据当前的Adapter的信息创建tab
      * <p>
      * This can be called when the tabs changed but must be called after an
-     * initial call to {@link #configureTabPager()}
+     * initial call to {@link #configureTabPager()}<br>
+     * 此方法可以在Tabs变化后被调用，但是它必须在初始化的调用：configureTabPager()之后才能调用
+     *
      */
     protected void createTabs() {
+        /*
+         * 如果host中的TabWidget不空，则先将其清空
+         */
         if (host.getTabWidget().getTabCount() > 0) {
             // Crash on Gingerbread if tab isn't set to zero since adding a
             // new tab removes selection state on the old tab which will be
@@ -176,19 +187,20 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
                 icon.setText(getIcon(i));
             else
                 ViewUtils.setGone(icon, true);
-            TypefaceUtils.setOcticons(icon);
+            TypefaceUtils.setOcticons(icon);//为标签名设置样式
             ((TextView) view.findViewById(id.tv_tab)).setText(getTitle(i));
 
             spec.setIndicator(view);
             host.addTab(spec);
 
+            //设置背景图片
             int background;
             if (i == 0)
-                background = drawable.tab_selector_right;
+                background = drawable.tab_selector_right;//最左边的背景选择器
             else if (i == count - 1)
-                background = drawable.tab_selector_left;
+                background = drawable.tab_selector_left;//最右边的背景选择器
             else
-                background = drawable.tab_selector_left_right;
+                background = drawable.tab_selector_left_right;//左右两边都有标签的标签的背景选择器
             ((ImageView) view.findViewById(id.iv_tab))
                     .setImageResource(background);
         }
@@ -196,6 +208,9 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
 
     /**
      * Configure tabs and pager
+     * 配置tabs和viewPager
+     * ①：
+     *
      */
     protected void configureTabPager() {
         if (adapter == null) {

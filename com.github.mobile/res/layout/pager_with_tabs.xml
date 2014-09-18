@@ -13,6 +13,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+    首页的布局
 -->
 <TabHost xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/th_tabs"
@@ -23,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
+<!-- 用来装：新鲜事、版本库、关注我的、我关注的这四个Tab -->
         <TabWidget
             android:id="@android:id/tabs"
             android:layout_width="match_parent"
