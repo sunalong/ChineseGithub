@@ -35,7 +35,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
 
 /**
- * Adapter for the default account's repositories
+ * Adapter for the default account's repositories<br>
+ * 用户版本库的Adapter
  */
 public class DefaultRepositoryListAdapter extends
         RepositoryListAdapter<Repository> {
@@ -49,8 +50,8 @@ public class DefaultRepositoryListAdapter extends
     private final Set<Long> noSeparators = new HashSet<Long>();
 
     /**
-     * Create list adapter for repositories
-     *
+     * Create list adapter for repositories<br>
+     *在此设置了布局
      * @param inflater
      * @param elements
      * @param account

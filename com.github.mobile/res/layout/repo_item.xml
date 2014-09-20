@@ -13,6 +13,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+  版本库界面item的布局
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListItem"
@@ -22,20 +23,22 @@
     android:paddingRight="0dp"
     android:paddingTop="0dp" >
 
+<!--         android:layout_height="match_parent" -->
     <LinearLayout
         android:id="@+id/ll_header"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:background="@color/background"
         android:orientation="vertical"
+        android:background="@color/background"
         android:paddingTop="10dp" >
 
         <TextView
             android:id="@+id/tv_header"
             style="@style/ListSubtitleText"
             android:paddingBottom="5dp"
+            android:text="最近老是浏览的"
             android:paddingLeft="10dp"
             android:textColor="@color/text_recent" />
 
@@ -50,6 +53,7 @@
         style="@style/PrimaryIcon"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/ll_header"
+        android:text="左图"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp" />
 
@@ -60,6 +64,7 @@
         android:layout_below="@id/ll_header"
         android:layout_toRightOf="@id/tv_repo_icon"
         android:orientation="vertical"
+        android:background="#00ff00"
         android:paddingBottom="5dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -68,6 +73,7 @@
         <include layout="@layout/repo_details" />
     </LinearLayout>
 
+<!--     每个item的分割线 -->
     <View
         android:id="@+id/v_separator"
         android:layout_width="match_parent"

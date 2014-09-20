@@ -68,7 +68,7 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
             return defaultUser ? new UserReceivedNewsFragment()
                     : new OrganizationNewsFragment();
         case 1:
-            return new RepositoryListFragment();
+            return new RepositoryListFragment();//°æ±¾¿â
         case 2:
             return defaultUser ? new MyFollowersFragment()
                     : new MembersFragment();

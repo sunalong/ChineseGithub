@@ -56,6 +56,7 @@ import com.github.mobile.core.issue.IssueEventMatcher;
 import com.github.mobile.core.repo.RepositoryEventMatcher;
 import com.github.mobile.core.user.UserEventMatcher;
 import com.github.mobile.core.user.UserEventMatcher.UserPair;
+import com.github.mobile.db.dao.EventDao;
 import com.github.mobile.ui.commit.CommitCompareViewActivity;
 import com.github.mobile.ui.commit.CommitViewActivity;
 import com.github.mobile.ui.gist.GistsViewActivity;
@@ -116,6 +117,9 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
         Event event = (Event) l.getItemAtPosition(position);
         //还有teamAddEvent没列在此
         Log.i(TAG,"event:"+event);
+        EventDao dao = new EventDao(getActivity());
+        dao.add(event.getId(), event.getType());
+        Log.i(TAG,"将"+event.getId()+"和"+event.getType()+"加入到数据库");
         /**
          * 此为下载类型
          */

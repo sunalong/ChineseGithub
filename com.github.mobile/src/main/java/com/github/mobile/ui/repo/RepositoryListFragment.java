@@ -52,7 +52,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
 
 /**
- * Fragment to display a list of {@link Repository} instances
+ * Fragment to display a list of {@link Repository} instances<br>
+ * 展现版本库列表的Fragment
  */
 public class RepositoryListFragment extends ItemListFragment<Repository>
         implements OrganizationSelectionListener {

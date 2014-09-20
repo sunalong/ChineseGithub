@@ -21,12 +21,14 @@
         style="@style/ListTitleText"
         android:paddingBottom="0dp"
         android:singleLine="true"
+        android:text="版本库名称ActionBarSherlock"
         android:textStyle="normal" />
 
     <TextView
         android:id="@+id/tv_repo_description"
         style="@style/ListSubtitleText"
         android:singleLine="true"
+        android:text="版本库描述ActionBarSherlock"
         android:textColor="@color/text_description" />
 
     <LinearLayout
@@ -39,26 +41,31 @@
         <TextView
             android:id="@+id/tv_language"
             style="@style/ListSubtitleText"
-            android:paddingRight="15dp" />
+            android:paddingRight="15dp"
+            android:text="语言" />
 
         <TextView
             android:id="@+id/tv_watchers_icon"
             style="@style/ListIcon"
+                    android:text="查看者图标"
             android:text="@string/icon_star" />
 
         <TextView
             android:id="@+id/tv_watchers"
             style="@style/ListNumericSubtitleText"
             android:paddingLeft="3dp"
+              android:text="查看者"
             android:paddingRight="15dp" />
 
         <TextView
             android:id="@+id/tv_forks_icon"
             style="@style/ListIcon"
+              android:text="fork图标"
             android:text="@string/icon_fork" />
 
         <TextView
             android:id="@+id/tv_forks"
+              android:text="fork数目"
             style="@style/ListNumericSubtitleText"
             android:paddingLeft="3dp" />
     </LinearLayout>
