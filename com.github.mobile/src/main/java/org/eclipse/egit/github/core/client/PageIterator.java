@@ -208,25 +208,4 @@ public class PageIterator<V> implements Iterator<Collection<V>>,
 	public Iterator<Collection<V>> iterator() {
 		return this;
 	}
-
-//    @Override
-//    public String toString() {
-//        return "PageIterator [request=" + request + ", client=" + client
-//                + ", nextPage=" + nextPage + ", lastPage=" + lastPage
-//                + ", next=" + next + ", last=" + last + "]";
-//    }
-
-
-    @Override
-    public String toString() {
-        return "PageIterator [request=" + request + ", client=" + client
-                + ", nextPage=" + nextPage + ", lastPage=" + lastPage
-                + ", next=" + next + ", last=" + last + ", getNextPage()="
-                + getNextPage() + ", getLastPage()=" + getLastPage()
-                + ", getNextUri()=" + getNextUri() + ", getLastUri()="
-                + getLastUri() + ", hasNext()=" + hasNext() + ", next()="
-                + next() + ", getRequest()=" + getRequest()
-                + "]";
-    }
-
 }

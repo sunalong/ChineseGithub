@@ -263,4 +263,18 @@ public class Event implements Serializable {
 		this.id = id;
 		return this;
 	}
+
+    @Override
+    public String toString() {
+        return "Event [type=" + type + ", isPublic=" + isPublic + ", payload="
+                + payload + ", repo=" + repo + ", id=" + id + ", actor="
+                + actor + ", org=" + org + ", createdAt=" + createdAt
+                + ", getType()=" + getType() + ", isPublic()=" + isPublic()
+                + ", getRepo()=" + getRepo() + ", getActor()=" + getActor()
+                + ", getOrg()=" + getOrg() + ", getCreatedAt()="
+                + getCreatedAt() + ", getPayload()=" + getPayload()
+                + ", getId()=" + getId() + "]";
+    }
+	
+	
 }

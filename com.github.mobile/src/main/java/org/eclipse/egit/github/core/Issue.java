@@ -349,8 +349,32 @@ public class Issue implements Serializable {
 		return this;
 	}
 
-	@Override
-	public String toString() {
-		return "Issue " + number; //$NON-NLS-1$
-	}
+    @Override
+    public String toString() {
+        return "Issue [id=" + id + ", closedAt=" + closedAt + ", createdAt="
+                + createdAt + ", updatedAt=" + updatedAt + ", comments="
+                + comments + ", number=" + number + ", labels=" + labels
+                + ", milestone=" + milestone + ", pullRequest=" + pullRequest
+                + ", body=" + body + ", bodyHtml=" + bodyHtml + ", bodyText="
+                + bodyText + ", htmlUrl=" + htmlUrl + ", state=" + state
+                + ", title=" + title + ", url=" + url + ", assignee="
+                + assignee + ", user=" + user + ", getClosedAt()="
+                + getClosedAt() + ", getCreatedAt()=" + getCreatedAt()
+                + ", getUpdatedAt()=" + getUpdatedAt() + ", getComments()="
+                + getComments() + ", getNumber()=" + getNumber()
+                + ", getLabels()=" + getLabels() + ", getMilestone()="
+                + getMilestone() + ", getPullRequest()=" + getPullRequest()
+                + ", getBody()=" + getBody() + ", getBodyHtml()="
+                + getBodyHtml() + ", getBodyText()=" + getBodyText()
+                + ", getHtmlUrl()=" + getHtmlUrl() + ", getState()="
+                + getState() + ", getTitle()=" + getTitle() + ", getUrl()="
+                + getUrl() + ", getAssignee()=" + getAssignee()
+                + ", getUser()=" + getUser() + ", getId()=" + getId() + "]";
+    }
+
+//	@Override
+//	public String toString() {
+//		return "Issue " + number; //$NON-NLS-1$
+//	}
+
 }

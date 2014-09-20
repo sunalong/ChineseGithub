@@ -103,8 +103,8 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
     }
 
     /**
-     * Add footer
-     *
+     * Add footer<br>
+     *将view加到listView的底部
      * @param view
      * @param data
      * @param isSelectable
@@ -117,8 +117,8 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
         info.data = data;
         info.isSelectable = isSelectable;
 
-        footers.add(info);
-        wrapped.notifyDataSetChanged();
+        footers.add(info);//将view加到listView的底部
+        wrapped.notifyDataSetChanged();//通知listView改变了，
         return this;
     }
 

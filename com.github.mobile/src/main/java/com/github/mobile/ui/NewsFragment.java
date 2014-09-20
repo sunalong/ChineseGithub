@@ -20,11 +20,28 @@ import static android.content.Intent.CATEGORY_BROWSABLE;
 import static org.eclipse.egit.github.core.event.Event.TYPE_COMMIT_COMMENT;
 import static org.eclipse.egit.github.core.event.Event.TYPE_DOWNLOAD;
 import static org.eclipse.egit.github.core.event.Event.TYPE_PUSH;
+
+import java.util.List;
+
+import org.eclipse.egit.github.core.Commit;
+import org.eclipse.egit.github.core.CommitComment;
+import org.eclipse.egit.github.core.Download;
+import org.eclipse.egit.github.core.Gist;
+import org.eclipse.egit.github.core.Issue;
+import org.eclipse.egit.github.core.Repository;
+import org.eclipse.egit.github.core.User;
+import org.eclipse.egit.github.core.event.CommitCommentPayload;
+import org.eclipse.egit.github.core.event.DownloadPayload;
+import org.eclipse.egit.github.core.event.Event;
+import org.eclipse.egit.github.core.event.PushPayload;
+import org.eclipse.egit.github.core.service.EventService;
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
@@ -48,25 +65,12 @@ import com.github.mobile.ui.user.NewsListAdapter;
 import com.github.mobile.util.AvatarLoader;
 import com.google.inject.Inject;
 
-import java.util.List;
-
-import org.eclipse.egit.github.core.Commit;
-import org.eclipse.egit.github.core.CommitComment;
-import org.eclipse.egit.github.core.Download;
-import org.eclipse.egit.github.core.Gist;
-import org.eclipse.egit.github.core.Issue;
-import org.eclipse.egit.github.core.Repository;
-import org.eclipse.egit.github.core.User;
-import org.eclipse.egit.github.core.event.CommitCommentPayload;
-import org.eclipse.egit.github.core.event.DownloadPayload;
-import org.eclipse.egit.github.core.event.Event;
-import org.eclipse.egit.github.core.event.PushPayload;
-import org.eclipse.egit.github.core.service.EventService;
-
 /**
  * Base news fragment class with utilities for subclasses to built on
  */
 public abstract class NewsFragment extends PagedItemFragment<Event> {
+
+    private static final String TAG = "NewsFragment";
 
     /**
      * Matcher for finding an {@link Issue} from an {@link Event}
@@ -104,46 +108,74 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
         setEmptyText(string.no_news);
     }
 
+    /*
+     *当点击新鲜事的某个item时回调的方法
+     */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Event event = (Event) l.getItemAtPosition(position);
-
+        //还有teamAddEvent没列在此
+        Log.i(TAG,"event:"+event);
+        /**
+         * 此为下载类型
+         */
         if (TYPE_DOWNLOAD.equals(event.getType())) {
+            Log.i(TAG,"TYPE_DOWNLOAD:");
             openDownload(event);
             return;
         }
 
+        /*
+         * 此为用户push到resporitory的类型
+         */
         if (TYPE_PUSH.equals(event.getType())) {
+            Log.i(TAG,"TYPE_PUSH:");
             openPush(event);
             return;
         }
 
         if (TYPE_COMMIT_COMMENT.equals(event.getType())) {
+            Log.i(TAG,"TYPE_COMMIT_COMMENT:");
             openCommitComment(event);
             return;
         }
 
+        //若为评论事件，则其能打印出来]
         Issue issue = issueMatcher.getIssue(event);
         if (issue != null) {
+            Log.i(TAG,"issue:"+issue);
             Repository repo = RepositoryEventMatcher.getRepository(
                     event.getRepo(), event.getActor(), event.getOrg());
             viewIssue(issue, repo);
             return;
         }
 
+        /**
+         * gist事件
+         */
         Gist gist = gistMatcher.getGist(event);
         if (gist != null) {
+            Log.i(TAG,"gist:"+gist);
             startActivity(GistsViewActivity.createIntent(gist));
             return;
         }
 
+        /**
+         * 用户create branch,repository等
+         */
         Repository repo = repoMatcher.getRepository(event);
-        if (repo != null)
+        if (repo != null){
+            Log.i(TAG,"repository:"+repo);
             viewRepository(repo);
-
+        }
+        /**
+         * 用户创建branch,repository等
+         */
         UserPair users = userMatcher.getUsers(event);
-        if (users != null)
+        if (users != null){
+            Log.i(TAG,"users:"+users);
             viewUser(users);
+        }
     }
 
     @Override
@@ -287,6 +319,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
      * @param repository
      */
     protected void viewIssue(Issue issue, Repository repository) {
+        Log.i(TAG,"viewIssue:"+issue);
         if (repository != null)
             startActivity(IssuesViewActivity.createIntent(issue, repository));
         else
@@ -295,8 +328,11 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
 
     @Override
     protected SingleTypeAdapter<Event> createAdapter(List<Event> items) {
-        return new NewsListAdapter(getActivity().getLayoutInflater(),
-                items.toArray(new Event[items.size()]), avatars);
+        Log.i(TAG,"打印Event:"+items.size());
+        for(int i=0;i<items.size();i++){
+            Log.i(TAG,"第"+i+"个Event:"+items.get(i));
+        }
+        return new NewsListAdapter(getActivity().getLayoutInflater(),items.toArray(new Event[items.size()]), avatars);
     }
 
     @Override

@@ -15,7 +15,10 @@
  */
 package com.github.mobile.ui.user;
 
+import android.util.Log;
+
 import com.github.mobile.core.ResourcePager;
+import com.github.mobile.ui.domain.MyPageIterator;
 
 import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.event.Event;
@@ -31,6 +34,8 @@ import org.eclipse.egit.github.core.event.Event;
 public class UserReceivedNewsFragment extends UserNewsFragment {
 
 
+    protected static final String TAG = "UserReceivedNewsFragment";
+
     /*
      *  1：返回一个github中的资源Pager:ResourcePager
      *  2：service是其父类UserNewsFragment的父类NewsFragment中声明的github中的服务：
@@ -40,16 +45,22 @@ public class UserReceivedNewsFragment extends UserNewsFragment {
      */
     @Override
     protected ResourcePager<Event> createPager() {
-        return new EventPager() {
+        //TODO:离线并判断网络，若无网络，则将离线好的数据封装为EventPager()后返回
+         EventPager eventPager = new EventPager() {
 
             @Override
             public PageIterator<Event> createIterator(int page, int size) {
-                //TODO:离线并判断网络，若无网络，则将离线好的数据返回
-                //参考/调用github.core.jar中的解析网络返回的数据的方法应该能够做到。
-                return service.pageUserReceivedEvents(org.getLogin(), false,
+                 PageIterator<Event> pageUserReceivedEvents = service.pageUserReceivedEvents(org.getLogin(), false,
                         page, size);
+                 Log.i(TAG,"1pageUserReceivedEvents:"+pageUserReceivedEvents);
+                 return pageUserReceivedEvents;
             }
         };
+        Log.i(TAG,"eventPager:"+eventPager);
+        return eventPager;
+
+
+
     }
 }
 

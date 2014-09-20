@@ -15,22 +15,29 @@
  */
 package com.github.mobile.ui.user;
 
-import com.github.mobile.core.ResourcePager;
-
 import org.eclipse.egit.github.core.event.Event;
+
+import android.util.Log;
+
+import com.github.mobile.core.ResourcePager;
 
 /**
  * Pager over events
  */
 public abstract class EventPager extends ResourcePager<Event> {
 
+    private static final String TAG = "EventPager";
+
     @Override
     protected Object getId(Event resource) {
+        Log.i(TAG,"getId:"+resource);
         return resource.getId();
     }
 
     @Override
     protected Event register(Event resource) {
+        Log.i(TAG,"register:"+resource);
         return NewsListAdapter.isValid(resource) ? resource : null;
     }
+
 }

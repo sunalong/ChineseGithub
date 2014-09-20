@@ -69,6 +69,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * List items provided to {@link #onLoadFinished(Loader, List)}
+     * 注意其在哪里被赋值了，此中数据用来展示在listView中
      */
     protected List<E> items = Collections.emptyList();
 
@@ -151,8 +152,8 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
     }
 
     /**
-     * Configure list after view has been created
-     *
+     * Configure list after view has been created<br>
+     *  为listView配置Adapter
      * @param activity
      * @param listView
      */
@@ -231,19 +232,18 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
     }
 
     /**
-     * Create adapter to display items
-     *
+     * Create adapter to display items<br>
+     *  创建展现items的Adapter
      * @return adapter
      */
     protected HeaderFooterListAdapter<SingleTypeAdapter<E>> createAdapter() {
         SingleTypeAdapter<E> wrapped = createAdapter(items);
-        return new HeaderFooterListAdapter<SingleTypeAdapter<E>>(getListView(),
-                wrapped);
+        return new HeaderFooterListAdapter<SingleTypeAdapter<E>>(getListView(),wrapped);
     }
 
     /**
-     * Create adapter to display items
-     *
+     * Create adapter to display items<br>
+     *  创建展现items的Adapter，<b>此方法为 adstract,供子类实现<b>
      * @param items
      * @return adapter
      */
@@ -305,7 +305,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Get list adapter
-     *
+     * 返回当前ListView使用的Adapter
      * @return list adapter
      */
     @SuppressWarnings("unchecked")
@@ -376,7 +376,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Set list shown or progress bar show
-     *
+     * 让listView展现数据
      * @param shown
      * @param animate
      * @return this fragment

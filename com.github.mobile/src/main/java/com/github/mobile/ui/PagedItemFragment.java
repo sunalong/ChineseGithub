@@ -39,6 +39,7 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
 
     /**
      * Resource pager
+     * 资源页，用来显示数据的页面
      */
     protected ResourcePager<E> pager;
 
