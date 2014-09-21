@@ -30,13 +30,11 @@ public abstract class EventPager extends ResourcePager<Event> {
 
     @Override
     protected Object getId(Event resource) {
-        Log.i(TAG,"getId:"+resource);
         return resource.getId();
     }
 
     @Override
     protected Event register(Event resource) {
-        Log.i(TAG,"register:"+resource);
         return NewsListAdapter.isValid(resource) ? resource : null;
     }
 

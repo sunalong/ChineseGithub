@@ -258,7 +258,7 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
                 userComparatorProvider);
     }
 
-    @Override
+//    @Override
     public void onLoadFinished(Loader<List<User>> listLoader, List<User> orgs) {
         this.orgs = orgs;
 
