@@ -15,3 +15,6 @@
 * com.viewpagerindicator
   <br>GitHub运行所需的三方库
 
+下载安装Demo：
+=============
+ [download demo](https://github.com/sunalong/ChineseGithub/releases/download/v1.0.0/AndroidGithub.apk)
