@@ -43,6 +43,7 @@ public class EventDao {
         values.put("isPublic", isPublic);
         values.put("type", type);
         long insert = db.insert("event", null, values );
+        db.close();
         return insert;
     }
     /**
@@ -64,6 +65,7 @@ public class EventDao {
             event.setType(type);
             eventList.add(event);
         }
+        db.close();
         return eventList;
 
     }

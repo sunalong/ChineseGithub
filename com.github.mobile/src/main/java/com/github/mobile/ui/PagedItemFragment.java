@@ -15,18 +15,22 @@
  */
 package com.github.mobile.ui;
 
+import java.io.IOException;
+import java.util.List;
+
+import org.eclipse.egit.github.core.event.Event;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 import com.github.mobile.ThrowableLoader;
 import com.github.mobile.core.ResourcePager;
-
-import java.io.IOException;
-import java.util.List;
+import com.github.mobile.db.dao.EventDao;
 
 /**
  * List fragment that adds more elements when the bottom of the list is scrolled
@@ -36,6 +40,8 @@ import java.util.List;
  */
 public abstract class PagedItemFragment<E> extends ItemListFragment<E>
         implements OnScrollListener {
+
+    private static final String TAG = "PagedItemFragment";
 
     /**
      * Resource pager
@@ -66,12 +72,7 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
         pager = createPager();
     }
 
-    /**
-     * Configure list after view has been created
-     *
-     * @param activity
-     * @param listView
-     */
+    @Override
     protected void configureList(Activity activity, ListView listView) {
         super.configureList(activity, listView);
 
@@ -137,6 +138,18 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
         loadingIndicator.setVisible(pager.hasMore());
 
         super.onLoadFinished(loader, items);
+        //=======================将item加入到数据库中=============================================
+        Log.i(TAG,"数据加载完毕，此后再创建Adapter");
+        this.items = items;
+        Log.i(TAG,"items:"+items);
+        if(items.get(0) instanceof Event){
+            List<Event> eventList = (List<Event>) items;
+            EventDao dao = new EventDao(getActivity());
+            for(int i=0;i<items.size();i++){
+                dao.add(eventList.get(i).getId(), eventList.get(i).isPublic(), eventList.get(i).getType());
+            }
+        }
+        //=======================将item加入到数据库中=============================================
     }
 
     @Override

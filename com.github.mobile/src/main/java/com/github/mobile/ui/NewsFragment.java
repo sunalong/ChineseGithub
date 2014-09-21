@@ -68,6 +68,7 @@ import com.google.inject.Inject;
 
 /**
  * Base news fragment class with utilities for subclasses to built on
+ * 新鲜事Fragment的基类，里面有一些供子类构建的工具类
  */
 public abstract class NewsFragment extends PagedItemFragment<Event> {
 
@@ -288,8 +289,8 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
     }
 
     /**
-     * Start an activity to view the given repository
-     *
+     * Start an activity to view the given repository<br>
+     *  开启一个Activity用来展现给定的repository
      * @param repository
      */
     protected void viewRepository(Repository repository) {
@@ -297,9 +298,11 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
     }
 
     /**
-     * Start an activity to view the given {@link UserPair}
+     * Start an activity to view the given {@link UserPair}<br>
+     * 开启一个Activity展现所给的UserPair
      * <p>
-     * This method does nothing by default, subclasses should override
+     * This method does nothing by default, subclasses should override<br>
+     * 此方法默认不做任何操作，子类应该覆写此方法
      *
      * @param users
      */
@@ -308,7 +311,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
 
     /**
      * Start an activity to view the given {@link User}
-     *
+     *开启一个Activity展现所给的User
      * @param user
      * @return true if new activity started, false otherwise
      */
@@ -318,7 +321,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
 
     /**
      * Start an activity to view the given {@link Issue}
-     *
+     *开启一个Activity展现所给的Issue
      * @param issue
      * @param repository
      */
@@ -330,6 +333,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
             startActivity(IssuesViewActivity.createIntent(issue));
     }
 
+    //设置Adapter,布局在此
     @Override
     protected SingleTypeAdapter<Event> createAdapter(List<Event> items) {
         Log.i(TAG,"打印Event:"+items.size());

@@ -25,7 +25,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
 
 /**
- * Fragment to display a news feed for a given user/org
+ * Fragment to display a news feed for a given user/org<br>
+ * 根据给出的用户或组织展现新鲜事的Fragment
  */
 public abstract class UserNewsFragment extends NewsFragment implements
         OrganizationSelectionListener {

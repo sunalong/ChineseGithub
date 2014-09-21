@@ -15,10 +15,17 @@
  */
 package com.github.mobile.ui;
 
+import java.util.Collections;
+import java.util.List;
+
+import org.eclipse.egit.github.core.event.Event;
+import org.hamcrest.core.IsInstanceOf;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,10 +48,8 @@ import com.github.mobile.R.id;
 import com.github.mobile.R.layout;
 import com.github.mobile.R.menu;
 import com.github.mobile.ThrowableLoader;
+import com.github.mobile.db.dao.EventDao;
 import com.github.mobile.util.ToastUtils;
-
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Base fragment for displaying a list of items that loads with a progress bar
@@ -56,6 +61,8 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
         LoaderCallbacks<List<E>> {
 
     private static final String FORCE_REFRESH = "forceRefresh";
+
+//    public static final String TAG = "ItemListFragment";
 
     /**
      * @param args
@@ -213,6 +220,11 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
      */
     protected abstract int getErrorMessage(Exception exception);
 
+    /**
+     * 当数据加载完毕后的操作<br>
+     * 应在此后才能创建Adapter,即在此后才能调用createAdapter
+     * 故应在此将数据放到数据库中
+     */
     public void onLoadFinished(Loader<List<E>> loader, List<E> items) {
         if (!isUsable())
             return;
@@ -226,7 +238,18 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
             return;
         }
 
-        this.items = items;
+//        //=======================将item加入到数据库中=============================================
+//        Log.i(TAG,"数据加载完毕，此后再创建Adapter");
+//        this.items = items;
+//        Log.i(TAG,"items:"+items);
+//        if(items.get(0) instanceof Event){
+//            List<Event> eventList = (List<Event>) items;
+//            EventDao dao = new EventDao(getActivity());
+//            for(int i=0;i<items.size();i++){
+//                dao.add(eventList.get(i).getId(), eventList.get(i).isPublic(), eventList.get(i).getType());
+//            }
+//        }
+        //=======================将item加入到数据库中=============================================
         getListAdapter().getWrappedAdapter().setItems(items.toArray());
         showList();
     }
