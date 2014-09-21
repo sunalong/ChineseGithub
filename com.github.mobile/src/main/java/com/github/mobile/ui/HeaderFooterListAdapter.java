@@ -104,7 +104,7 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
 
     /**
      * Add footer<br>
-     *½«view¼Óµ½listViewµÄµ×²¿
+     *å°†viewåŠ åˆ°listViewçš„åº•éƒ¨
      * @param view
      * @param data
      * @param isSelectable
@@ -117,8 +117,8 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
         info.data = data;
         info.isSelectable = isSelectable;
 
-        footers.add(info);//½«view¼Óµ½listViewµÄµ×²¿
-        wrapped.notifyDataSetChanged();//Í¨ÖªlistView¸Ä±äÁË£¬
+        footers.add(info);//å°†viewåŠ åˆ°listViewçš„åº•éƒ¨
+        wrapped.notifyDataSetChanged();//é€šçŸ¥listViewæ”¹å˜äº†ï¼Œ
         return this;
     }
 

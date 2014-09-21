@@ -59,7 +59,7 @@ import org.eclipse.egit.github.core.service.CollaboratorService;
 
 /**
  * Activity to display a collection of issues or pull requests in a pager
- *  展示具体新鲜事集合的界面
+ *  灞曠ず鍏蜂綋鏂伴矞浜嬮泦鍚堢殑鐣岄潰
  */
 public class IssuesViewActivity extends PagerActivity {
 

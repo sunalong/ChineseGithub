@@ -31,7 +31,7 @@ import java.util.Set;
 
 /**
  * Pager adapter for a user's different views
- * HomeActivityÒ³µÄViewPagerµÄAdapter
+ * HomeActivityé¡µçš„ViewPagerçš„Adapter
  */
 public class HomePagerAdapter extends FragmentPagerAdapter {
 
@@ -60,15 +60,15 @@ public class HomePagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
         /*
-         *µÚÒ»¸öFragment:
-         * ÈôÊÇÄ¬ÈÏÓÃ»§£¬ÔòÎªÓÃ»§½ÓÊÕµ½µÄĞÂÏÊÊÂµÄFragment
-         * ·ñÔò£¬Îª×éÖ¯½ÓÊÕµ½µÄĞÂÏÊÊÂµÄFragment
+         *ç¬¬ä¸€ä¸ªFragment:
+         * è‹¥æ˜¯é»˜è®¤ç”¨æˆ·ï¼Œåˆ™ä¸ºç”¨æˆ·æ¥æ”¶åˆ°çš„æ–°é²œäº‹çš„Fragment
+         * å¦åˆ™ï¼Œä¸ºç»„ç»‡æ¥æ”¶åˆ°çš„æ–°é²œäº‹çš„Fragment
          */
         case 0:
             return defaultUser ? new UserReceivedNewsFragment()
                     : new OrganizationNewsFragment();
         case 1:
-            return new RepositoryListFragment();//°æ±¾¿â
+            return new RepositoryListFragment();//ç‰ˆæœ¬åº“
         case 2:
             return defaultUser ? new MyFollowersFragment()
                     : new MembersFragment();

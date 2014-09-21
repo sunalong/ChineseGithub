@@ -25,11 +25,11 @@ import org.eclipse.egit.github.core.event.Event;
 
 /**
  * News that a given user has received
- * ÓÃ»§½ÓÊÕµ½µÄĞÂÏÊÊÂµÄFragment
- * ¿ÉÔÚ´Ë×ö»º´æ£º½«Êı¾İÀëÏßÏÂÀ´
- * ÅĞ¶ÏÒ»´Î£º
- *      ÈôÓĞÍøÂç£¬ÔòÕı³£ÇëÇó
- *      ÈôÎŞÍøÂç£¬ÔòÊ¹ÓÃÀëÏßÊı¾İ
+ * ç”¨æˆ·æ¥æ”¶åˆ°çš„æ–°é²œäº‹çš„Fragment
+ * å¯åœ¨æ­¤åšç¼“å­˜ï¼šå°†æ•°æ®ç¦»çº¿ä¸‹æ¥
+ * åˆ¤æ–­ä¸€æ¬¡ï¼š
+ *      è‹¥æœ‰ç½‘ç»œï¼Œåˆ™æ­£å¸¸è¯·æ±‚
+ *      è‹¥æ— ç½‘ç»œï¼Œåˆ™ä½¿ç”¨ç¦»çº¿æ•°æ®
  */
 public class UserReceivedNewsFragment extends UserNewsFragment {
 
@@ -37,15 +37,15 @@ public class UserReceivedNewsFragment extends UserNewsFragment {
     protected static final String TAG = "UserReceivedNewsFragment";
 
     /*
-     *  1£º·µ»ØÒ»¸ögithubÖĞµÄ×ÊÔ´Pager:ResourcePager
-     *  2£ºserviceÊÇÆä¸¸ÀàUserNewsFragmentµÄ¸¸ÀàNewsFragmentÖĞÉùÃ÷µÄgithubÖĞµÄ·şÎñ£º
+     *  1ï¼šè¿”å›ä¸€ä¸ªgithubä¸­çš„èµ„æºPager:ResourcePager
+     *  2ï¼šserviceæ˜¯å…¶çˆ¶ç±»UserNewsFragmentçš„çˆ¶ç±»NewsFragmentä¸­å£°æ˜çš„githubä¸­çš„æœåŠ¡ï¼š
      *      protected EventService service;
-     *  3£º´Ëserviceµ÷ÓÃµÄÊÇgithub.core.jar°üÖĞµÄ·½·¨
-     *      pageUserReceivedEventsÖĞµ÷ÓÃµÄ·½·¨£ºcreateUserReceivedEventRequest
+     *  3ï¼šæ­¤serviceè°ƒç”¨çš„æ˜¯github.core.jaråŒ…ä¸­çš„æ–¹æ³•
+     *      pageUserReceivedEventsä¸­è°ƒç”¨çš„æ–¹æ³•ï¼šcreateUserReceivedEventRequest
      */
     @Override
     protected ResourcePager<Event> createPager() {
-        //TODO:ÀëÏß²¢ÅĞ¶ÏÍøÂç£¬ÈôÎŞÍøÂç£¬Ôò½«ÀëÏßºÃµÄÊı¾İ·â×°ÎªEventPager()ºó·µ»Ø
+        //TODO:ç¦»çº¿å¹¶åˆ¤æ–­ç½‘ç»œï¼Œè‹¥æ— ç½‘ç»œï¼Œåˆ™å°†ç¦»çº¿å¥½çš„æ•°æ®å°è£…ä¸ºEventPager()åè¿”å›
          EventPager eventPager = new EventPager() {
 
             @Override

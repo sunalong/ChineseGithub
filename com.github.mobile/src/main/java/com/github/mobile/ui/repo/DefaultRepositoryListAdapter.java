@@ -36,7 +36,7 @@ import org.eclipse.egit.github.core.User;
 
 /**
  * Adapter for the default account's repositories<br>
- * 用户版本库的Adapter
+ * 鐢ㄦ埛鐗堟湰搴撶殑Adapter
  */
 public class DefaultRepositoryListAdapter extends
         RepositoryListAdapter<Repository> {
@@ -51,7 +51,7 @@ public class DefaultRepositoryListAdapter extends
 
     /**
      * Create list adapter for repositories<br>
-     *在此设置了布局
+     *鍦ㄦ璁剧疆浜嗗竷灞�
      * @param inflater
      * @param elements
      * @param account

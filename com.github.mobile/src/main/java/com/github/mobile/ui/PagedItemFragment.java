@@ -39,7 +39,7 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
 
     /**
      * Resource pager
-     * ×ÊÔ´Ò³£¬ÓÃÀ´ÏÔÊ¾Êı¾İµÄÒ³Ãæ
+     * èµ„æºé¡µï¼Œç”¨æ¥æ˜¾ç¤ºæ•°æ®çš„é¡µé¢
      */
     protected ResourcePager<E> pager;
 

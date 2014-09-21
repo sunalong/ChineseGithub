@@ -205,7 +205,7 @@ public class TypefaceUtils {
 
     /**
      * Get octicons typeface<br>
-     *  »ñÈ¡octicons¡¾Ò»ÖÖÃ²ËÆÅ£±ÆµÄ×ÖÌå¡¿×ÖÌå
+     *  è·å–octiconsã€ä¸€ç§è²Œä¼¼ç‰›é€¼çš„å­—ä½“ã€‘å­—ä½“
      * @param context
      * @return octicons typeface
      * @author sunalong
@@ -218,7 +218,7 @@ public class TypefaceUtils {
 
     /**
      * Set octicons typeface on given text view(s)<br>
-     *  ½«Ëù¸øµÄTextViewµÄ×ÖÌåÉèÖÃ³Éocticons×ÖÌå
+     *  å°†æ‰€ç»™çš„TextViewçš„å­—ä½“è®¾ç½®æˆocticonså­—ä½“
      * @param textViews
      */
     public static void setOcticons(final TextView... textViews) {
@@ -226,7 +226,7 @@ public class TypefaceUtils {
             return;
 
         /**
-         * ×¢Òâ¿É»ñµÃcontextµÄ²»½ö½öÊÇactivityµÈ£¬»¹¿ÉÒÔÊÇview
+         * æ³¨æ„å¯è·å¾—contextçš„ä¸ä»…ä»…æ˜¯activityç­‰ï¼Œè¿˜å¯ä»¥æ˜¯view
          */
         Typeface typeface = getOcticons(textViews[0].getContext());
         for (TextView textView : textViews)
@@ -235,7 +235,7 @@ public class TypefaceUtils {
 
     /**
      * Get typeface with name<br>
-     *  ¸ù¾İ¸ø¶¨µÄ×ÖÌåÃû³Æ»ñÈ¡×ÖÌå
+     *  æ ¹æ®ç»™å®šçš„å­—ä½“åç§°è·å–å­—ä½“
      * @param context
      * @param name
      * @return typeface

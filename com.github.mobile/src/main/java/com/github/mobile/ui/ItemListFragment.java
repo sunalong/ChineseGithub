@@ -69,7 +69,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * List items provided to {@link #onLoadFinished(Loader, List)}
-     * ×¢ÒâÆäÔÚÄÄÀï±»¸³ÖµÁË£¬´ËÖĞÊı¾İÓÃÀ´Õ¹Ê¾ÔÚlistViewÖĞ
+     * æ³¨æ„å…¶åœ¨å“ªé‡Œè¢«èµ‹å€¼äº†ï¼Œæ­¤ä¸­æ•°æ®ç”¨æ¥å±•ç¤ºåœ¨listViewä¸­
      */
     protected List<E> items = Collections.emptyList();
 
@@ -153,7 +153,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Configure list after view has been created<br>
-     *  ÎªlistViewÅäÖÃAdapter
+     *  ä¸ºlistViewé…ç½®Adapter
      * @param activity
      * @param listView
      */
@@ -233,7 +233,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Create adapter to display items<br>
-     *  ´´½¨Õ¹ÏÖitemsµÄAdapter
+     *  åˆ›å»ºå±•ç°itemsçš„Adapter
      * @return adapter
      */
     protected HeaderFooterListAdapter<SingleTypeAdapter<E>> createAdapter() {
@@ -243,7 +243,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Create adapter to display items<br>
-     *  ´´½¨Õ¹ÏÖitemsµÄAdapter£¬<b>´Ë·½·¨Îª adstract,¹©×ÓÀàÊµÏÖ<b>
+     *  åˆ›å»ºå±•ç°itemsçš„Adapterï¼Œ<b>æ­¤æ–¹æ³•ä¸º adstract,ä¾›å­ç±»å®ç°<b>
      * @param items
      * @return adapter
      */
@@ -305,7 +305,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Get list adapter
-     * ·µ»Øµ±Ç°ListViewÊ¹ÓÃµÄAdapter
+     * è¿”å›å½“å‰ListViewä½¿ç”¨çš„Adapter
      * @return list adapter
      */
     @SuppressWarnings("unchecked")
@@ -376,7 +376,7 @@ public abstract class ItemListFragment<E> extends DialogFragment implements
 
     /**
      * Set list shown or progress bar show
-     * ÈÃlistViewÕ¹ÏÖÊı¾İ
+     * è®©listViewå±•ç°æ•°æ®
      * @param shown
      * @param animate
      * @return this fragment

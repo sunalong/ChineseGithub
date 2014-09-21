@@ -35,7 +35,7 @@ import com.github.mobile.util.TypefaceUtils;
 
 /**
  * Activity with tabbed pages
- *×¢ÒâAdapterµÄÉùÃ÷£¨protected V adapter;£©
+ *æ³¨æ„Adapterçš„å£°æ˜ï¼ˆprotected V adapter;ï¼‰
  * @param <V>
  */
 public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider>
@@ -92,7 +92,7 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
 
     /**
      * Get icon for position
-     *ÎªÃ¿¸ö±êÇ©ÉèÖÃÃû×Ö£¬ÓÉ×ÓÀà¸²Ğ´
+     *ä¸ºæ¯ä¸ªæ ‡ç­¾è®¾ç½®åå­—ï¼Œç”±å­ç±»è¦†å†™
      * @param position
      * @return icon
      */
@@ -143,9 +143,9 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
     }
 
     /**
-     * ¢Ù£º³õÊ¼»¯adapter
-     * ¢Ú£º¸üĞÂMenu²Ëµ¥
-     * ¢Û£ºÎªViewPagerÉèÖÃadapter
+     * â‘ ï¼šåˆå§‹åŒ–adapter
+     * â‘¡ï¼šæ›´æ–°Menuèœå•
+     * â‘¢ï¼šä¸ºViewPagerè®¾ç½®adapter
      */
     private void createPager() {
         adapter = createAdapter();
@@ -155,16 +155,16 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
 
     /**
      * Create tab using information from current adapter<br>
-     * ¸ù¾İµ±Ç°µÄAdapterµÄĞÅÏ¢´´½¨tab
+     * æ ¹æ®å½“å‰çš„Adapterçš„ä¿¡æ¯åˆ›å»ºtab
      * <p>
      * This can be called when the tabs changed but must be called after an
      * initial call to {@link #configureTabPager()}<br>
-     * ´Ë·½·¨¿ÉÒÔÔÚTabs±ä»¯ºó±»µ÷ÓÃ£¬µ«ÊÇËü±ØĞëÔÚ³õÊ¼»¯µÄµ÷ÓÃ£ºconfigureTabPager()Ö®ºó²ÅÄÜµ÷ÓÃ
+     * æ­¤æ–¹æ³•å¯ä»¥åœ¨Tabså˜åŒ–åè¢«è°ƒç”¨ï¼Œä½†æ˜¯å®ƒå¿…é¡»åœ¨åˆå§‹åŒ–çš„è°ƒç”¨ï¼šconfigureTabPager()ä¹‹åæ‰èƒ½è°ƒç”¨
      *
      */
     protected void createTabs() {
         /*
-         * Èç¹ûhostÖĞµÄTabWidget²»¿Õ£¬ÔòÏÈ½«ÆäÇå¿Õ
+         * å¦‚æœhostä¸­çš„TabWidgetä¸ç©ºï¼Œåˆ™å…ˆå°†å…¶æ¸…ç©º
          */
         if (host.getTabWidget().getTabCount() > 0) {
             // Crash on Gingerbread if tab isn't set to zero since adding a
@@ -187,20 +187,20 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
                 icon.setText(getIcon(i));
             else
                 ViewUtils.setGone(icon, true);
-            TypefaceUtils.setOcticons(icon);//Îª±êÇ©ÃûÉèÖÃÑùÊ½
+            TypefaceUtils.setOcticons(icon);//ä¸ºæ ‡ç­¾åè®¾ç½®æ ·å¼
             ((TextView) view.findViewById(id.tv_tab)).setText(getTitle(i));
 
             spec.setIndicator(view);
             host.addTab(spec);
 
-            //ÉèÖÃ±³¾°Í¼Æ¬
+            //è®¾ç½®èƒŒæ™¯å›¾ç‰‡
             int background;
             if (i == 0)
-                background = drawable.tab_selector_right;//×î×ó±ßµÄ±³¾°Ñ¡ÔñÆ÷
+                background = drawable.tab_selector_right;//æœ€å·¦è¾¹çš„èƒŒæ™¯é€‰æ‹©å™¨
             else if (i == count - 1)
-                background = drawable.tab_selector_left;//×îÓÒ±ßµÄ±³¾°Ñ¡ÔñÆ÷
+                background = drawable.tab_selector_left;//æœ€å³è¾¹çš„èƒŒæ™¯é€‰æ‹©å™¨
             else
-                background = drawable.tab_selector_left_right;//×óÓÒÁ½±ß¶¼ÓĞ±êÇ©µÄ±êÇ©µÄ±³¾°Ñ¡ÔñÆ÷
+                background = drawable.tab_selector_left_right;//å·¦å³ä¸¤è¾¹éƒ½æœ‰æ ‡ç­¾çš„æ ‡ç­¾çš„èƒŒæ™¯é€‰æ‹©å™¨
             ((ImageView) view.findViewById(id.iv_tab))
                     .setImageResource(background);
         }
@@ -208,8 +208,8 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
 
     /**
      * Configure tabs and pager
-     * ÅäÖÃtabsºÍviewPager
-     * ¢Ù£º
+     * é…ç½®tabså’ŒviewPager
+     * â‘ ï¼š
      *
      */
     protected void configureTabPager() {

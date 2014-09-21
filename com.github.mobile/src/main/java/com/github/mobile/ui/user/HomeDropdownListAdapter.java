@@ -35,7 +35,7 @@ import org.eclipse.egit.github.core.User;
 
 /**
  * Dropdown list adapter to display orgs. and other context-related activity
- * links ÕâÊÇÊ×Ò³µÄActionBarµÄÍ·Ïñ¼ÓÃû×ÖµÄÇøÓò µã»÷¿ÉÒÔÑ¡Ôñ×éÖ¯¡¢ÓÃ»§µÈ
+ * links è¿™æ˜¯é¦–é¡µçš„ActionBarçš„å¤´åƒåŠ åå­—çš„åŒºåŸŸ ç‚¹å‡»å¯ä»¥é€‰æ‹©ç»„ç»‡ã€ç”¨æˆ·ç­‰
  *
  * @author sunalong
  */
@@ -162,13 +162,13 @@ public class HomeDropdownListAdapter extends SingleTypeAdapter<Object> {
     }
 
     /*
-     *ÉèÖÃ µã»÷ActionBarÉÏµÄÍ·Ïñ¼°Ãû×Öºó³öÏÖµÄÏÂÀ­ÁĞ±íÖĞ
-     *µÄÃ¿Ò»Ïî£¨ÓÃ»§Ãû£¬×éÖ¯£¬Gists,IssueÃæ°å£¬ÊéÇ©£©µÄ²¼¾ÖµÄitem
+     *è®¾ç½® ç‚¹å‡»ActionBarä¸Šçš„å¤´åƒåŠåå­—åå‡ºç°çš„ä¸‹æ‹‰åˆ—è¡¨ä¸­
+     *çš„æ¯ä¸€é¡¹ï¼ˆç”¨æˆ·åï¼Œç»„ç»‡ï¼ŒGists,Issueé¢æ¿ï¼Œä¹¦ç­¾ï¼‰çš„å¸ƒå±€çš„item
      */
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         if (convertView == null)
-//            View.inflate(context, resource, root);//¿ÉÓÃ´Ë·½·¨À´´úÌæ
+//            View.inflate(context, resource, root);//å¯ç”¨æ­¤æ–¹æ³•æ¥ä»£æ›¿
             convertView = initialize(inflater.inflate(layout.org_dropdown_item,
                     null));
         update(position, convertView, getItem(position));
@@ -176,7 +176,7 @@ public class HomeDropdownListAdapter extends SingleTypeAdapter<Object> {
     }
 
     /**
-     * ¸øImageViewÉèÖÃÍ¼Æ¬¼°Tag
+     * ç»™ImageViewè®¾ç½®å›¾ç‰‡åŠTag
      *
      * @param image
      * @param drawable
@@ -194,25 +194,25 @@ public class HomeDropdownListAdapter extends SingleTypeAdapter<Object> {
     }
 
     /*
-     * ´ËÎª wishlistÖĞµÄSingleTypeAdapterÖĞµÄ·½·¨
-     * ÕâÀïÖ»¸ü¸ÄÍ¼Æ¬µÄÏÔÊ¾£¬ÕûÌå²¼¾ÖµÄ±ä»¯ÏÔÊ¾ÔÚHomeActivityÖĞ¡£
+     * æ­¤ä¸º wishlistä¸­çš„SingleTypeAdapterä¸­çš„æ–¹æ³•
+     * è¿™é‡Œåªæ›´æ”¹å›¾ç‰‡çš„æ˜¾ç¤ºï¼Œæ•´ä½“å¸ƒå±€çš„å˜åŒ–æ˜¾ç¤ºåœ¨HomeActivityä¸­ã€‚
      */
     @Override
     protected void update(int position, Object item) {
         switch (getAction(position)) {
-        case ACTION_GISTS:// µã»÷Gists
+        case ACTION_GISTS:// ç‚¹å‡»Gists
             setText(0, string.gists);
             setActionIcon(imageView(1), drawable.dropdown_gist);
             break;
-        case ACTION_DASHBOARD:// µã»÷IssueÃæ°å
+        case ACTION_DASHBOARD:// ç‚¹å‡»Issueé¢æ¿
             setText(0, string.issue_dashboard);
             setActionIcon(imageView(1), drawable.dropdown_dashboard);
             break;
-        case ACTION_BOOKMARKS:// µã»÷ÊéÇ©
+        case ACTION_BOOKMARKS:// ç‚¹å‡»ä¹¦ç­¾
             setText(0, string.bookmarks);
             setActionIcon(imageView(1), drawable.dropdown_bookmark);
             break;
-        default:// Ä¬ÈÏÊÇÓÃ»§
+        default:// é»˜è®¤æ˜¯ç”¨æˆ·
             User user = (User) item;
             setText(0, user.getLogin());
             avatars.bind(imageView(1), user);

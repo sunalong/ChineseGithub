@@ -100,7 +100,7 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     }
 
     /**
-     * ÖØĞÂ¼ÓÔØÓÃ»§»òÕß×éÖ¯µÄÊı¾İ
+     * é‡æ–°åŠ è½½ç”¨æˆ·æˆ–è€…ç»„ç»‡çš„æ•°æ®
      */
     private void reloadOrgs() {
         getSupportLoaderManager().restartLoader(0, null,
@@ -127,7 +127,7 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
                             return;
 
                         /**
-                         * Êı¾İ¼ÓÔØÍê³ÉºóÉèÖÃ×éÖ¯/ÓÃ»§ ĞÅÏ¢
+                         * æ•°æ®åŠ è½½å®Œæˆåè®¾ç½®ç»„ç»‡/ç”¨æˆ· ä¿¡æ¯
                          */
                         view.post(new Runnable() {
 
@@ -147,7 +147,7 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     }
 
     /**
-     *µ±HomeActivityonResumeÊ±£¬Èô²»ÊÇÄ¬ÈÏµÄÓÃ»§£¬ÔòÖØĞÂ¼ÓÔØÊı¾İ
+     *å½“HomeActivityonResumeæ—¶ï¼Œè‹¥ä¸æ˜¯é»˜è®¤çš„ç”¨æˆ·ï¼Œåˆ™é‡æ–°åŠ è½½æ•°æ®
      */
     @Override
     protected void onResume() {
@@ -175,8 +175,8 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
         Log.d(TAG, "setOrg : " + org.getLogin());
 
         /**
-         * ·â±ÕµÄsharedProfercnces,½«Öµ´«½øÀ´¼´¿É£¬ÄÚ²¿ÒÑ¾­commitÁË¡£½Ï¼òµ¥
-         * ³éÈ¡³öÎª¹¤¾ßÀà£¬´î¿ò¼ÜÊ±Ê¹ÓÃ
+         * å°é—­çš„sharedProfercnces,å°†å€¼ä¼ è¿›æ¥å³å¯ï¼Œå†…éƒ¨å·²ç»commitäº†ã€‚è¾ƒç®€å•
+         * æŠ½å–å‡ºä¸ºå·¥å…·ç±»ï¼Œæ­æ¡†æ¶æ—¶ä½¿ç”¨
          */
         PreferenceUtils.save(sharedPreferences.edit().putInt(PREF_ORG_ID,
                 org.getId()));
@@ -225,7 +225,7 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     }
 
     /*
-     *µ±µã»÷ActionBarÉÏµÄµ¼º½ÌõÄ¿Ê±´¥·¢µÄ·½·¨
+     *å½“ç‚¹å‡»ActionBarä¸Šçš„å¯¼èˆªæ¡ç›®æ—¶è§¦å‘çš„æ–¹æ³•
      */
     @Override
     public boolean onNavigationItemSelected(int itemPosition, long itemId) {
@@ -298,8 +298,8 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     }
 
     /*
-     *¸²Ğ´¸¸ÀàTabPagerActivityµÄ´´½¨AdapterµÄ·½·¨
-     *´ËÊ±ÎªHomeActivity´´½¨ÁËViewPagerµÄ¾ßÌå½çÃæ
+     *è¦†å†™çˆ¶ç±»TabPagerActivityçš„åˆ›å»ºAdapterçš„æ–¹æ³•
+     *æ­¤æ—¶ä¸ºHomeActivityåˆ›å»ºäº†ViewPagerçš„å…·ä½“ç•Œé¢
      */
     @Override
     protected HomePagerAdapter createAdapter() {
@@ -307,16 +307,16 @@ public class HomeActivity extends TabPagerActivity<HomePagerAdapter> implements
     }
 
     /*
-     *ÓÉTabPagerActivity¼Ì³Ğ¶øÀ´
-     *ÎªÃ¿¸öTabÉèÖÃÃû×Ö
+     *ç”±TabPagerActivityç»§æ‰¿è€Œæ¥
+     *ä¸ºæ¯ä¸ªTabè®¾ç½®åå­—
      */
     @Override
     protected String getIcon(int position) {
         switch (position) {
         case 0:
-            return ICON_NEWS;//ĞÂÏÊÊÂ
+            return ICON_NEWS;//æ–°é²œäº‹
         case 1:
-            return ICON_PUBLIC;//°æ±¾¿â
+            return ICON_PUBLIC;//ç‰ˆæœ¬åº“
         case 2:
             return isDefaultUser ? ICON_WATCH : ICON_TEAM;
         case 3:

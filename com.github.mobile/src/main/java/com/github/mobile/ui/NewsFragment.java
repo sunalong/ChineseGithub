@@ -110,18 +110,18 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
     }
 
     /*
-     *µ±µã»÷ĞÂÏÊÊÂµÄÄ³¸öitemÊ±»Øµ÷µÄ·½·¨
+     *å½“ç‚¹å‡»æ–°é²œäº‹çš„æŸä¸ªitemæ—¶å›è°ƒçš„æ–¹æ³•
      */
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Event event = (Event) l.getItemAtPosition(position);
-        //»¹ÓĞteamAddEventÃ»ÁĞÔÚ´Ë
+        //è¿˜æœ‰teamAddEventæ²¡åˆ—åœ¨æ­¤
         Log.i(TAG,"event:"+event);
 //        EventDao dao = new EventDao(getActivity());
 //        dao.add(event.getId(), event.getType());
-        Log.i(TAG,"½«"+event.getId()+"ºÍ"+event.getType()+"¼ÓÈëµ½Êı¾İ¿â");
+        Log.i(TAG,"å°†"+event.getId()+"å’Œ"+event.getType()+"åŠ å…¥åˆ°æ•°æ®åº“");
         /**
-         * ´ËÎªÏÂÔØÀàĞÍ
+         * æ­¤ä¸ºä¸‹è½½ç±»å‹
          */
         if (TYPE_DOWNLOAD.equals(event.getType())) {
             Log.i(TAG,"TYPE_DOWNLOAD:");
@@ -130,7 +130,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
         }
 
         /*
-         * ´ËÎªÓÃ»§pushµ½resporitoryµÄÀàĞÍ
+         * æ­¤ä¸ºç”¨æˆ·pushåˆ°resporitoryçš„ç±»å‹
          */
         if (TYPE_PUSH.equals(event.getType())) {
             Log.i(TAG,"TYPE_PUSH:");
@@ -144,7 +144,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
             return;
         }
 
-        //ÈôÎªÆÀÂÛÊÂ¼ş£¬ÔòÆäÄÜ´òÓ¡³öÀ´]
+        //è‹¥ä¸ºè¯„è®ºäº‹ä»¶ï¼Œåˆ™å…¶èƒ½æ‰“å°å‡ºæ¥]
         Issue issue = issueMatcher.getIssue(event);
         if (issue != null) {
             Log.i(TAG,"issue:"+issue);
@@ -155,7 +155,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
         }
 
         /**
-         * gistÊÂ¼ş
+         * gistäº‹ä»¶
          */
         Gist gist = gistMatcher.getGist(event);
         if (gist != null) {
@@ -165,7 +165,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
         }
 
         /**
-         * ÓÃ»§create branch,repositoryµÈ
+         * ç”¨æˆ·create branch,repositoryç­‰
          */
         Repository repo = repoMatcher.getRepository(event);
         if (repo != null){
@@ -173,7 +173,7 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
             viewRepository(repo);
         }
         /**
-         * ÓÃ»§´´½¨branch,repositoryµÈ
+         * ç”¨æˆ·åˆ›å»ºbranch,repositoryç­‰
          */
         UserPair users = userMatcher.getUsers(event);
         if (users != null){
@@ -332,9 +332,9 @@ public abstract class NewsFragment extends PagedItemFragment<Event> {
 
     @Override
     protected SingleTypeAdapter<Event> createAdapter(List<Event> items) {
-        Log.i(TAG,"´òÓ¡Event:"+items.size());
+        Log.i(TAG,"æ‰“å°Event:"+items.size());
         for(int i=0;i<items.size();i++){
-            Log.i(TAG,"µÚ"+i+"¸öEvent:"+items.get(i));
+            Log.i(TAG,"ç¬¬"+i+"ä¸ªEvent:"+items.get(i));
         }
         return new NewsListAdapter(getActivity().getLayoutInflater(),items.toArray(new Event[items.size()]), avatars);
     }

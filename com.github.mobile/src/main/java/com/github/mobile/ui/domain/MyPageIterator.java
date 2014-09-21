@@ -5,7 +5,7 @@ import org.eclipse.egit.github.core.client.PageIterator;
 import org.eclipse.egit.github.core.client.PagedRequest;
 
 /**
- * PageIteratorµÄ×ÓÀà£¬Ö»ÎªÀëÏß×ö×¼±¸
+ * PageIteratorçš„å­ç±»ï¼Œåªä¸ºç¦»çº¿åšå‡†å¤‡
  * @author sunalong
  *
  */

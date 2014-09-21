@@ -34,7 +34,7 @@ public class ResourceLoadingIndicator {
     private boolean showing;
 
     /**
-     * adapter底部的加载指示器(progressBar)
+     * adapter搴曢儴鐨勫姞杞芥寚绀哄櫒(progressBar)
      */
     private final View view;
 
@@ -70,7 +70,7 @@ public class ResourceLoadingIndicator {
 
     /**
      * Set visibility of entire indicator view
-     *  用来控制adapter底部的加载指示器(progressBar)是否显示
+     *  鐢ㄦ潵鎺у埗adapter搴曢儴鐨勫姞杞芥寚绀哄櫒(progressBar)鏄惁鏄剧ず
      * @param visible
      * @return this indicator
      */

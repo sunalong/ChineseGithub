@@ -26,7 +26,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class ItemStore {
 
     /**
-     * ÈõÒıÓÃ
+     * å¼±å¼•ç”¨
      * @author sunalong
      *
      * @param <V>

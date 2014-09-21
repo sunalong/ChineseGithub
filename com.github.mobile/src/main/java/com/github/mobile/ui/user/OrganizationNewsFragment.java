@@ -23,7 +23,7 @@ import org.eclipse.egit.github.core.event.Event;
 
 /**
  * Fragment to display an organization's news
- * 组织接收到的新鲜事的Fragment
+ * 缁勭粐鎺ユ敹鍒扮殑鏂伴矞浜嬬殑Fragment
  */
 public class OrganizationNewsFragment extends UserNewsFragment {
 
