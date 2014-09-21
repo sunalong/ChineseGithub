@@ -65,8 +65,8 @@ public class HomeDropdownListAdapter extends SingleTypeAdapter<Object> {
     private final LayoutInflater inflater;
 
     /**
-     * l Create adapter with initial orgs
-     *
+     * l Create adapter with initial orgs<br>
+     * 主页上的点击ActionBar上的头像时出现的下拉列表
      * @param context
      * @param orgs
      * @param avatars

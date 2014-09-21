@@ -20,7 +20,6 @@
     android:layout_height="match_parent"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:background="#00FF00"
     android:paddingLeft="10dp"
     android:paddingRight="5dp" >
 
@@ -29,7 +28,6 @@
         style="@style/AvatarActionBar"
         android:layout_marginLeft="3dp"
         android:layout_marginRight="6dp"
-        android:background="#FF0000"
         android:contentDescription="@string/avatar" />
 
     <TextView
