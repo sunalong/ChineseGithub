@@ -140,20 +140,20 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
         // =======================将item加入到数据库中=============================================
         Log.i(TAG, "数据加载完毕，此后再创建Adapter");
         Log.i(TAG, "items.size:" + items.size());
-//        this.items = items;
-//        Log.i(TAG, "items:" + items);
-//        // if(items==null || items.size()==0)
-//        // return;
-//        if (items != null && items.size() > 0) {
-//            if (items.get(0) instanceof Event) {
-//                List<Event> eventList = (List<Event>) items;
-//                EventDao dao = new EventDao(getActivity());
-//                for (int i = 0; i < items.size(); i++) {
-//                    dao.add(eventList.get(i).getId(), eventList.get(i)
-//                            .isPublic(), eventList.get(i).getType());
-//                }
-//            }
-//        }
+        Log.i(TAG, "items:" + items);
+
+        // if(items==null || items.size()==0)
+        // return;
+        if (items != null && items.size() > 0) {
+            if (items.get(0) instanceof Event) {
+                List<Event> eventList = (List<Event>) items;
+                EventDao dao = new EventDao(getActivity());
+                for (int i = 0; i < items.size(); i++) {
+                    dao.add(eventList.get(i).getId(), eventList.get(i)
+                            .isPublic(), eventList.get(i).getType());
+                }
+            }
+        }
         // =======================将item加入到数据库中=============================================
     }
 
