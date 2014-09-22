@@ -64,7 +64,7 @@ public abstract class RepositoryListAdapter<V> extends SingleTypeAdapter<V> {
             final String mirrorUrl) {
         if (TextUtils.isEmpty(mirrorUrl))
             if (isPrivate)
-                setText(0, ICON_PRIVATE);
+                setText(0, ICON_PRIVATE);//为指定index的textView设置text
             else if (isFork)
                 setText(0, ICON_FORK);
             else

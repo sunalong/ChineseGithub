@@ -18,7 +18,8 @@ import java.util.Date;
 import org.eclipse.egit.github.core.util.DateUtils;
 
 /**
- * Repository model class
+ * Repository model class<br>
+ * 版本库的JavaBean
  */
 public class Repository implements IRepositoryIdProvider, Serializable {
 
@@ -545,4 +546,45 @@ public class Repository implements IRepositoryIdProvider, Serializable {
 			return null;
 		return login + "/" + name; //$NON-NLS-1$
 	}
+
+	/**
+	 * 输出版本库信息
+	 * @author sunalong
+	 */
+    @Override
+    public String toString() {
+        return "Repository [fork=" + fork + ", hasDownloads=" + hasDownloads
+                + ", hasIssues=" + hasIssues + ", hasWiki=" + hasWiki
+                + ", isPrivate=" + isPrivate + ", createdAt=" + createdAt
+                + ", pushedAt=" + pushedAt + ", updatedAt=" + updatedAt
+                + ", forks=" + forks + ", id=" + id + ", openIssues="
+                + openIssues + ", size=" + size + ", watchers=" + watchers
+                + ", parent=" + parent + ", source=" + source + ", cloneUrl="
+                + cloneUrl + ", description=" + description + ", homepage="
+                + homepage + ", gitUrl=" + gitUrl + ", htmlUrl=" + htmlUrl
+                + ", language=" + language + ", masterBranch=" + masterBranch
+                + ", mirrorUrl=" + mirrorUrl + ", name=" + name + ", sshUrl="
+                + sshUrl + ", svnUrl=" + svnUrl + ", url=" + url + ", owner="
+                + owner + ", isFork()=" + isFork() + ", isHasDownloads()="
+                + isHasDownloads() + ", isHasIssues()=" + isHasIssues()
+                + ", isHasWiki()=" + isHasWiki() + ", isPrivate()="
+                + isPrivate() + ", getCreatedAt()=" + getCreatedAt()
+                + ", getPushedAt()=" + getPushedAt() + ", getForks()="
+                + getForks() + ", getOpenIssues()=" + getOpenIssues()
+                + ", getSize()=" + getSize() + ", getWatchers()="
+                + getWatchers() + ", getParent()=" + getParent()
+                + ", getSource()=" + getSource() + ", getCloneUrl()="
+                + getCloneUrl() + ", getDescription()=" + getDescription()
+                + ", getHomepage()=" + getHomepage() + ", getGitUrl()="
+                + getGitUrl() + ", getHtmlUrl()=" + getHtmlUrl()
+                + ", getLanguage()=" + getLanguage() + ", getMasterBranch()="
+                + getMasterBranch() + ", getMirrorUrl()=" + getMirrorUrl()
+                + ", getName()=" + getName() + ", getSshUrl()=" + getSshUrl()
+                + ", getSvnUrl()=" + getSvnUrl() + ", getUrl()=" + getUrl()
+                + ", getOwner()=" + getOwner() + ", getUpdatedAt()="
+                + getUpdatedAt() + ", getId()=" + getId() + ", generateId()="
+                + generateId() + "]";
+    }
+
+
 }

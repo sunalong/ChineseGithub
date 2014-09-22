@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 /**
  * Helpers for dealing with custom typefaces and measuring text to display
+ * 处理自定义的字体并测量文字以便显示的工具类
  */
 public class TypefaceUtils {
 
@@ -176,7 +177,7 @@ public class TypefaceUtils {
 
     /**
      * Find the maximum number of digits in the given numbers
-     *
+     * 在给定的一组数字的对数中找到最大的对数
      * @param numbers
      * @return max digits
      */

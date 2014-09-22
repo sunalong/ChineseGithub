@@ -36,7 +36,7 @@ import org.eclipse.egit.github.core.User;
 
 /**
  * Adapter for the default account's repositories<br>
- * 用户版本库的Adapter
+ * 默认用户的版本库的Adapter
  */
 public class DefaultRepositoryListAdapter extends
         RepositoryListAdapter<Repository> {
@@ -51,7 +51,8 @@ public class DefaultRepositoryListAdapter extends
 
     /**
      * Create list adapter for repositories<br>
-     *在此设置了布局
+     * 在此设置了布局
+     *
      * @param inflater
      * @param elements
      * @param account
@@ -99,6 +100,10 @@ public class DefaultRepositoryListAdapter extends
         return this;
     }
 
+    /**
+     * 此方法在SingleTypeAdapter 的getView中，在update(**)前
+     * 在这里就是为textView设置字体及颜色
+     */
     @Override
     protected View initialize(View view) {
         view = super.initialize(view);
@@ -117,6 +122,9 @@ public class DefaultRepositoryListAdapter extends
                 id.tv_header, id.v_separator, id.tv_repo_name };
     }
 
+    /**
+     * 在SingleTypeAdapter的getView方法中
+     */
     @Override
     protected void update(int position, Repository repository) {
         String headerValue = headers.get(repository.getId());
@@ -124,7 +132,7 @@ public class DefaultRepositoryListAdapter extends
             setGone(5, false);
             setText(6, headerValue);
         } else
-            setGone(5, true);
+            setGone(5, true);//让给定位置的view消失
 
         setGone(7, noSeparators.contains(repository.getId()));
 

@@ -24,6 +24,7 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ListView;
@@ -57,6 +58,8 @@ import org.eclipse.egit.github.core.User;
  */
 public class RepositoryListFragment extends ItemListFragment<Repository>
         implements OrganizationSelectionListener {
+
+    private static final String TAG = "RepositoryListFragment";
 
     @Inject
     private AccountDataManager cache;
@@ -138,6 +141,24 @@ public class RepositoryListFragment extends ItemListFragment<Repository>
         }
 
         super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onLoadFinished(Loader<List<Repository>> loader,
+            List<Repository> items) {
+        // TODO Auto-generated method stub
+        super.onLoadFinished(loader, items);
+        Log.i(TAG, "获取到当前page页的数据Items.size:" + items.size() + "内容：" + items);
+        // 开个线程来存储打印等操作，以防影响其他，或在相对应的子类中做具体操作
+        final List<Repository> repositoryList = items;
+        new Thread(){
+            public void run() {
+                //在此时的items的类型为Repository
+                for(int i=0;i<repositoryList.size();i++){
+                    Log.i(TAG,i+":"+repositoryList.get(i));
+                }
+            }
+        }.start();
     }
 
     @Override

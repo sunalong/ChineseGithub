@@ -86,6 +86,11 @@ public abstract class IssueListAdapter<V> extends SingleTypeAdapter<V> {
      */
     protected abstract int getNumber(V issue);
 
+    /**
+     *  计算items的宽度
+     *  @author sunalong
+     * @param items
+     */
     @SuppressWarnings("unchecked")
     private void computeNumberWidth(final Object[] items) {
         int[] numbers = new int[items.length];

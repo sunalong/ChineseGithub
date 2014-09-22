@@ -138,6 +138,11 @@ public abstract class PagedItemFragment<E> extends ItemListFragment<E>
 
         super.onLoadFinished(loader, items);
         // =======================将item加入到数据库中=============================================
+
+        /**
+         * 在此判断，若获取的items为空，则从数据库中取得并返回，
+         * 若从网络获取的数据不为空，则将其加入到数据库
+         */
         Log.i(TAG, "数据加载完毕，此后再创建Adapter");
         Log.i(TAG, "items.size:" + items.size());
         Log.i(TAG, "items:" + items);
