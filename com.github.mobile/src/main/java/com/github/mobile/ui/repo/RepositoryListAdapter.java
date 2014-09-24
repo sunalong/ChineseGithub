@@ -21,6 +21,7 @@ import static com.github.mobile.util.TypefaceUtils.ICON_MIRROR_PUBLIC;
 import static com.github.mobile.util.TypefaceUtils.ICON_PRIVATE;
 import static com.github.mobile.util.TypefaceUtils.ICON_PUBLIC;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 
 import com.github.kevinsawicki.wishlist.SingleTypeAdapter;
@@ -32,6 +33,8 @@ import com.github.kevinsawicki.wishlist.ViewUtils;
  * @param <V>
  */
 public abstract class RepositoryListAdapter<V> extends SingleTypeAdapter<V> {
+
+    private static final String TAG = "RepositoryListAdapter";
 
     /**
      * Create list adapter
@@ -48,14 +51,14 @@ public abstract class RepositoryListAdapter<V> extends SingleTypeAdapter<V> {
     }
 
     /**
-     * Update repository details
-     *
-     * @param description
-     * @param language
+     * Update repository details<br>
+     * 让repository上数据显示
+     * @param description  repository的描述
+     * @param language  本repository的使用的主要语言【仅当是当前用户自己创建的repository才会显示】
      * @param watchers
-     * @param forks
+     * @param forks forks的数量
      * @param isPrivate
-     * @param isFork
+     * @param isFork 是否是fork
      * @param mirrorUrl
      */
     protected void updateDetails(final String description,
@@ -76,8 +79,10 @@ public abstract class RepositoryListAdapter<V> extends SingleTypeAdapter<V> {
                 setText(0, ICON_MIRROR_PUBLIC);
         }
 
-        if (!TextUtils.isEmpty(description))
+        if (!TextUtils.isEmpty(description)){
             ViewUtils.setGone(setText(1, description), false);
+            Log.i(TAG,"description:"+description);
+            }
         else
             setGone(1, true);
 

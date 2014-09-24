@@ -26,7 +26,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Helper for finding and tweaking a view's children
+ * Helper for finding and tweaking a view's children<br>
+ * 用于寻找、调整View的孩子的帮助类
  */
 public class ViewFinder {
 

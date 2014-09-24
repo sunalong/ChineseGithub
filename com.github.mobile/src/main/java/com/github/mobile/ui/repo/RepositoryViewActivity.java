@@ -55,7 +55,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.User;
 
 /**
- * Activity to view a repository
+ * Activity to view a repository<br>
+ * 展现repository中的文件列表
  */
 public class RepositoryViewActivity extends
         TabPagerActivity<RepositoryPagerAdapter> {
@@ -91,11 +92,13 @@ public class RepositoryViewActivity extends
 
         User owner = repository.getOwner();
 
+        //设置ActionBar
         ActionBar actionBar = getSupportActionBar();
         actionBar.setTitle(repository.getName());
         actionBar.setSubtitle(owner.getLogin());
         actionBar.setDisplayHomeAsUpEnabled(true);
 
+        //配置Pager和tab
         if (owner.getAvatarUrl() != null
                 && RepositoryUtils.isComplete(repository))
             configurePager();
@@ -142,6 +145,9 @@ public class RepositoryViewActivity extends
         return super.onPrepareOptionsMenu(menu);
     }
 
+    /*
+     * 打开搜索请求
+     */
     @Override
     public boolean onSearchRequested() {
         if (pager.getCurrentItem() == 1) {
@@ -160,6 +166,9 @@ public class RepositoryViewActivity extends
             super.onBackPressed();
     }
 
+    /**
+     * 配置Pager和Tab
+     */
     private void configurePager() {
         avatars.bind(getSupportActionBar(), repository.getOwner());
         configureTabPager();
@@ -168,6 +177,9 @@ public class RepositoryViewActivity extends
         checkStarredRepositoryStatus();
     }
 
+    /*
+     * 点击菜单的选项事件
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -202,6 +214,7 @@ public class RepositoryViewActivity extends
 
     @Override
     protected RepositoryPagerAdapter createAdapter() {
+        //判断当前repository是否有issues并创建Adaprer
         return new RepositoryPagerAdapter(this, repository.isHasIssues());
     }
 
@@ -214,13 +227,13 @@ public class RepositoryViewActivity extends
     protected String getIcon(int position) {
         switch (position) {
         case 0:
-            return ICON_NEWS;
+            return ICON_NEWS;//新鲜事
         case 1:
-            return ICON_CODE;
+            return ICON_CODE;//代码
         case 2:
-            return ICON_COMMIT;
+            return ICON_COMMIT;//提交
         case 3:
-            return ICON_ISSUE_OPEN;
+            return ICON_ISSUE_OPEN;//issues
         default:
             return super.getIcon(position);
         }
@@ -267,6 +280,9 @@ public class RepositoryViewActivity extends
             }.start();
     }
 
+    /**
+     * 检查Repository刚开始的状态
+     */
     private void checkStarredRepositoryStatus() {
         starredStatusChecked = false;
         new StarredRepositoryTask(this, repository) {

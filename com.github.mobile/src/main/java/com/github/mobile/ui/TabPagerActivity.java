@@ -74,8 +74,8 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
     }
 
     /**
-     * Create pager adapter
-     *
+     * Create pager adapter<br>
+     *  创建ViewPager的Adapter
      * @return pager adapter
      */
     protected abstract V createAdapter();
@@ -91,8 +91,8 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
     }
 
     /**
-     * Get icon for position
-     *为每个标签设置名字，由子类覆写
+     * Get icon for position<br>
+     *获取每个标签名字，由子类覆写
      * @param position
      * @return icon
      */
@@ -187,7 +187,7 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
                 icon.setText(getIcon(i));
             else
                 ViewUtils.setGone(icon, true);
-            TypefaceUtils.setOcticons(icon);//为标签名设置样式
+            TypefaceUtils.setOcticons(icon);//为标签名设置字体样式
             ((TextView) view.findViewById(id.tv_tab)).setText(getTitle(i));
 
             spec.setIndicator(view);
@@ -207,9 +207,8 @@ public abstract class TabPagerActivity<V extends PagerAdapter & FragmentProvider
     }
 
     /**
-     * Configure tabs and pager
+     * Configure tabs and pager<br>
      * 配置tabs和viewPager
-     * ①：
      *
      */
     protected void configureTabPager() {

@@ -164,7 +164,7 @@ public class RepositoryListFragment extends ItemListFragment<Repository>
     @Override
     public void onListItemClick(ListView list, View v, int position, long id) {
         Repository repo = (Repository) list.getItemAtPosition(position);
-        if (recentRepos != null)
+        if (recentRepos != null)//将被点击的recpsitory加入到最近浏览过的repository
             recentRepos.add(repo);
 
         startActivityForResult(RepositoryViewActivity.createIntent(repo),
@@ -187,8 +187,8 @@ public class RepositoryListFragment extends ItemListFragment<Repository>
         dialog.setTitle(repo.generateId());
 
         View view = getActivity().getLayoutInflater().inflate(
-                layout.repo_dialog, null);
-        ViewFinder finder = new ViewFinder(view);
+                layout.repo_dialog, null);//repository中，长按最近浏览过后item出现的view
+        ViewFinder finder = new ViewFinder(view);//将view加入到ViewFinder，变成对话框
 
         final User owner = repo.getOwner();
         avatars.bind(finder.imageView(id.iv_owner_avatar), owner);
@@ -318,8 +318,7 @@ public class RepositoryListFragment extends ItemListFragment<Repository>
 
     @Override
     protected SingleTypeAdapter<Repository> createAdapter(List<Repository> items) {
-        return new DefaultRepositoryListAdapter(getActivity()
-                .getLayoutInflater(),
+        return new DefaultRepositoryListAdapter(getActivity().getLayoutInflater(),
                 items.toArray(new Repository[items.size()]), org);
     }
 

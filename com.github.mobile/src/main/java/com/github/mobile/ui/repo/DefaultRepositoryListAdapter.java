@@ -15,8 +15,10 @@
  */
 package com.github.mobile.ui.repo;
 
+import android.R;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.WebView.FindListener;
 import android.widget.TextView;
 
 import com.github.mobile.R.color;
@@ -101,8 +103,7 @@ public class DefaultRepositoryListAdapter extends
     }
 
     /**
-     * 此方法在SingleTypeAdapter 的getView中，在update(**)前
-     * 在这里就是为textView设置字体及颜色
+     * 此方法在SingleTypeAdapter 的getView中，在update(**)前 在这里就是为textView设置字体及颜色
      */
     @Override
     protected View initialize(View view) {
@@ -112,6 +113,10 @@ public class DefaultRepositoryListAdapter extends
                 (TextView) view.findViewById(id.tv_forks_icon),
                 (TextView) view.findViewById(id.tv_watchers_icon));
         descriptionColor = view.getResources().getColor(color.text_description);
+
+//        TextView textView = view.findViewById(R.id.t);
+//        textView.setText(repository.getDescription());
+
         return view;
     }
 
@@ -132,7 +137,7 @@ public class DefaultRepositoryListAdapter extends
             setGone(5, false);
             setText(6, headerValue);
         } else
-            setGone(5, true);//让给定位置的view消失
+            setGone(5, true);// 让给定位置的view消失
 
         setGone(7, noSeparators.contains(repository.getId()));
 
@@ -142,6 +147,7 @@ public class DefaultRepositoryListAdapter extends
                     .foreground('/', descriptionColor);
         name.bold(repository.getName());
         setText(8, name);
+//        TextView text =
 
         updateDetails(repository.getDescription(), repository.getLanguage(),
                 repository.getWatchers(), repository.getForks(),

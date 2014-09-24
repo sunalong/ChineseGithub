@@ -67,7 +67,7 @@ public abstract class TypeAdapter extends BaseAdapter {
 
   /**
    * Get text view at given index
-   *
+   *  给定index获取textView
    * @param childViewIndex
    * @return text view
    */
@@ -130,8 +130,8 @@ public abstract class TypeAdapter extends BaseAdapter {
   }
 
   /**
-   * Set text on text view at given index
-   *
+   * Set text on text view at given index<br>
+   *  为指定index的textView设置text,其文字排版边缘处理的非常好！
    * @param childViewIndex
    * @param text
    * @return text view
@@ -141,8 +141,8 @@ public abstract class TypeAdapter extends BaseAdapter {
   }
 
   /**
-   * Set text on text view at given index
-   *
+   * Set text on text view at given index<br>
+   * 给textView设置text,其文字排版边缘处理的非常好！
    * @param parentView
    * @param childViewIndex
    * @param text
@@ -233,8 +233,8 @@ public abstract class TypeAdapter extends BaseAdapter {
   }
 
   /**
-   * Set child view as gone or visible
-   *
+   * Set child view as gone or visible<br>
+   *  让给定位置的view消失
    * @param childViewIndex
    * @param gone
    * @return child view

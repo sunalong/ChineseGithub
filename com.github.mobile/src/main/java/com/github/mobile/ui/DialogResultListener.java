@@ -24,8 +24,8 @@ import android.os.Bundle;
 public interface DialogResultListener {
 
     /**
-     * Callback for a dialog finishing and delivering a result
-     *
+     * Callback for a dialog finishing and delivering a result<br>
+     *  当一个dialog 关闭并传值的回调
      * @param requestCode
      * @param resultCode
      *            result such as {@link Activity#RESULT_CANCELED} or

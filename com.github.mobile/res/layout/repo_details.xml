@@ -25,8 +25,8 @@
         android:textStyle="normal" />
 
     <TextView
-        android:id="@+id/tv_repo_description"
         style="@style/ListSubtitleText"
+        android:id="@+id/tv_repo_description"
         android:singleLine="true"
         android:text="版本库描述ActionBarSherlock"
         android:textColor="@color/text_description" />

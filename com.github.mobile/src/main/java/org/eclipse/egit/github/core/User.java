@@ -464,4 +464,44 @@ public class User implements Serializable {
 		this.plan = plan;
 		return this;
 	}
+
+	/**
+	 * 打印出User
+	 * @author sunalong
+	 */
+    @Override
+    public String toString() {
+        return "User [hireable=" + hireable + ", createdAt=" + createdAt
+                + ", collaborators=" + collaborators + ", diskUsage="
+                + diskUsage + ", followers=" + followers + ", following="
+                + following + ", id=" + id + ", ownedPrivateRepos="
+                + ownedPrivateRepos + ", privateGists=" + privateGists
+                + ", publicGists=" + publicGists + ", publicRepos="
+                + publicRepos + ", totalPrivateRepos=" + totalPrivateRepos
+                + ", avatarUrl=" + avatarUrl + ", blog=" + blog + ", company="
+                + company + ", email=" + email + ", gravatarId=" + gravatarId
+                + ", htmlUrl=" + htmlUrl + ", location=" + location
+                + ", login=" + login + ", name=" + name + ", type=" + type
+                + ", url=" + url + ", plan=" + plan + ", isHireable()="
+                + isHireable() + ", getCreatedAt()=" + getCreatedAt()
+                + ", getCollaborators()=" + getCollaborators()
+                + ", getDiskUsage()=" + getDiskUsage() + ", getFollowers()="
+                + getFollowers() + ", getFollowing()=" + getFollowing()
+                + ", getId()=" + getId() + ", getOwnedPrivateRepos()="
+                + getOwnedPrivateRepos() + ", getPrivateGists()="
+                + getPrivateGists() + ", getPublicGists()=" + getPublicGists()
+                + ", getPublicRepos()=" + getPublicRepos()
+                + ", getTotalPrivateRepos()=" + getTotalPrivateRepos()
+                + ", getAvatarUrl()=" + getAvatarUrl() + ", getBlog()="
+                + getBlog() + ", getCompany()=" + getCompany()
+                + ", getEmail()=" + getEmail() + ", getGravatarId()="
+                + getGravatarId() + ", getHtmlUrl()=" + getHtmlUrl()
+                + ", getLocation()=" + getLocation() + ", getLogin()="
+                + getLogin() + ", getName()=" + getName() + ", getType()="
+                + getType() + ", getUrl()=" + getUrl() + ", getPlan()="
+                + getPlan() + "]";
+    }
+
+
 }
+

@@ -64,7 +64,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.service.DataService;
 
 /**
- * Fragment to display a repository's source code tree
+ * Fragment to display a repository's source code tree<br>
+ * 显示repository源码树的Fragment
  */
 public class RepositoryCodeFragment extends DialogFragment implements
         OnItemClickListener {

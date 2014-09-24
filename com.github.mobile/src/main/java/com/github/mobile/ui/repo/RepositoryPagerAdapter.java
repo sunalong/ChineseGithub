@@ -27,7 +27,8 @@ import com.github.mobile.ui.commit.CommitListFragment;
 import com.github.mobile.ui.issue.IssuesFragment;
 
 /**
- * Adapter to view a repository's various pages
+ * Adapter to view a repository's various pages<br>
+ * 用于显示repository的各种pages(新鲜事、代码、提交、issues)的Adapter
  */
 public class RepositoryPagerAdapter extends FragmentPagerAdapter {
 
@@ -63,6 +64,9 @@ public class RepositoryPagerAdapter extends FragmentPagerAdapter {
         this.hasIssues = hasIssues;
     }
 
+    /**
+     * 为Page设置标题
+     */
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {
