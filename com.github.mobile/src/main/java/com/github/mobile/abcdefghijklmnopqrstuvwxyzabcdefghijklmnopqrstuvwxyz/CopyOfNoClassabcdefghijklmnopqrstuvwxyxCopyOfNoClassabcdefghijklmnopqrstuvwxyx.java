@@ -1,0 +1,5 @@
+package com.github.mobile.abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz;
+
+public class CopyOfNoClassabcdefghijklmnopqrstuvwxyxCopyOfNoClassabcdefghijklmnopqrstuvwxyx {
+
+}

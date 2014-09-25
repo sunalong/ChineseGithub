@@ -98,9 +98,9 @@ public class CodeTreeAdapter extends MultiTypeAdapter {
     protected int getChildLayoutId(final int type) {
         switch (type) {
         case TYPE_BLOB:
-            return layout.blob_item;
+            return layout.blob_item;//供文件显示的布局
         case TYPE_TREE:
-            return layout.folder_item;
+            return layout.folder_item;//供文件夹显示的布局
         default:
             return -1;
         }

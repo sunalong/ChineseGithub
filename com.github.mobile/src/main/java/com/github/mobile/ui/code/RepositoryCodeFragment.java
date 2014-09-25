@@ -109,16 +109,17 @@ public class RepositoryCodeFragment extends DialogFragment implements
         /**
          * 获取repository数据的路径：
          * ①：在RepositoryViewActivity的createIntent时便将repository加入到了Activity:
-         *  add(EXTRA_REPOSITORY, repository)
+         * add(EXTRA_REPOSITORY, repository)
          * ②：在RepositoryViewActivity的createAdapter中，创建了RepositoryPagerAdapter,
-         *  但此Adapter中的每一个pager都是一个Fragment
-         * ③：在Fragment的onAttach中，Activity为RepositoryViewActivity,所以能获取在第一步加入到Activity的repository
+         * 但此Adapter中的每一个pager都是一个Fragment
+         * ③：在Fragment的onAttach中，Activity为RepositoryViewActivity
+         * ,所以能获取在第一步加入到Activity的repository
          */
         repository = getSerializableExtra(EXTRA_REPOSITORY);
     }
 
     /**
-     * 在此更新repository树
+     * 在此创建、更新repository树
      */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
@@ -130,11 +131,17 @@ public class RepositoryCodeFragment extends DialogFragment implements
             setFolder(tree, folder);
     }
 
+    /**
+     * Menu菜单
+     */
     @Override
     public void onCreateOptionsMenu(Menu optionsMenu, MenuInflater inflater) {
         inflater.inflate(menu.refresh, optionsMenu);
     }
 
+    /**
+     * 点击Menu菜单触发的事件
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
@@ -149,12 +156,21 @@ public class RepositoryCodeFragment extends DialogFragment implements
         }
     }
 
+    /**
+     * 展示加载条
+     * @param loading
+     */
     private void showLoading(final boolean loading) {
         ViewUtils.setGone(progressView, !loading);
         ViewUtils.setGone(listView, loading);
         ViewUtils.setGone(branchFooterView, loading);
     }
 
+    /**
+     * 更新repository树
+     *
+     * @param reference
+     */
     private void refreshTree(final Reference reference) {
         showLoading(true);
         new RefreshTreeTask(repository, reference, getActivity()) {
@@ -220,6 +236,9 @@ public class RepositoryCodeFragment extends DialogFragment implements
         }
     }
 
+    /**
+     * 在此设置布局
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
@@ -262,8 +281,8 @@ public class RepositoryCodeFragment extends DialogFragment implements
     }
 
     /**
-     * Back up the currently viewed folder to its parent
-     *
+     * Back up the currently viewed folder to its parent<br>
+     * 返回键操作：回退当前view文件夹到其父文件夹
      * @return true if directory changed, false otherwise
      */
     public boolean onBackPressed() {

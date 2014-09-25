@@ -13,6 +13,7 @@
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
   See the License for the specific language governing permissions and
   limitations under the License.
+  代码树中的文件显示的布局
 -->
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/ListItem" >
@@ -38,11 +39,13 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:paddingBottom="0dp"
+            android:text="文件"
             android:paddingRight="5dp"
             android:textStyle="normal" />
 
         <TextView
             android:id="@+id/tv_size"
+            android:text="大小"
             style="@style/ListSubtitleText"
             android:singleLine="true" />
     </LinearLayout>

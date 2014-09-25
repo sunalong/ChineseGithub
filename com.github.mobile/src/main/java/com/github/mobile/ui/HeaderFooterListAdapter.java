@@ -24,7 +24,8 @@ import android.widget.ListView.FixedViewInfo;
 import java.util.ArrayList;
 
 /**
- * Utility adapter that supports adding headers and footers
+ * Utility adapter that supports adding headers and footers<br>
+ * 支持添加headers及footers的Adapter工具类
  *
  * @param <E>
  */
@@ -104,7 +105,8 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
 
     /**
      * Add footer<br>
-     *将view加到listView的底部
+     * 将view加到listView的底部
+     *
      * @param view
      * @param data
      * @param isSelectable
@@ -117,8 +119,8 @@ public class HeaderFooterListAdapter<E extends BaseAdapter> extends
         info.data = data;
         info.isSelectable = isSelectable;
 
-        footers.add(info);//将view加到listView的底部
-        wrapped.notifyDataSetChanged();//通知listView改变了，
+        footers.add(info);// 将view加到listView的底部
+        wrapped.notifyDataSetChanged();// 通知listView改变了，
         return this;
     }
 

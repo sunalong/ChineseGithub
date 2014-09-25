@@ -38,6 +38,7 @@ public class FullTree {
 
     /**
      * Entry in a tree
+     * 树中的实体
      */
     public static class Entry implements Comparable<Entry> {
 
@@ -76,6 +77,7 @@ public class FullTree {
 
     /**
      * Folder in a tree
+     * 树中的文件夹
      */
     public static class Folder extends Entry {
 
