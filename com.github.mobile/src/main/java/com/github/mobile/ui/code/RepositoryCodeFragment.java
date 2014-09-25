@@ -21,6 +21,7 @@ import static com.github.mobile.RequestCodes.REF_UPDATE;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -69,6 +70,8 @@ import org.eclipse.egit.github.core.service.DataService;
  */
 public class RepositoryCodeFragment extends DialogFragment implements
         OnItemClickListener {
+
+    private static final String TAG = "RepositoryCodeFragment";
 
     private FullTree tree;
 
@@ -349,10 +352,17 @@ public class RepositoryCodeFragment extends DialogFragment implements
         if (tree == null || entry == null)
             return;
 
-        if (entry instanceof Folder)
+        if (entry instanceof Folder){
+            Log.i(TAG,"点击的是文件夹tree:"+tree);
+            Log.i(TAG,"点击的是文件夹(Folder) entry:"+(Folder) entry);
             setFolder(tree, (Folder) entry);
-        else
+        }
+        else{
+            Log.i(TAG,"repository:"+repository);
+            Log.i(TAG,"Tree:"+tree);
             startActivity(BranchFileViewActivity.createIntent(repository,
                     tree.branch, entry.entry.getPath(), entry.entry.getSha()));
+
+        }
     }
 }

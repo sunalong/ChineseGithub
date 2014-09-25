@@ -118,6 +118,9 @@ public class CodeTreeAdapter extends MultiTypeAdapter {
         }
     }
 
+    /**
+     * 在getView中，当convertView为空时调用
+     */
     @Override
     protected View initialize(final int type, View view) {
         view = super.initialize(type, view);
@@ -142,6 +145,11 @@ public class CodeTreeAdapter extends MultiTypeAdapter {
         return view;
     }
 
+    /**
+     * 在getView中被调用，以便更新view的数据显示<br>
+     * ①：设置padding<br>
+     * ②：设置文件、文件夹item的名称及数据的显示
+     */
     @Override
     protected void update(final int position, final Object item, final int type) {
         if (indented)

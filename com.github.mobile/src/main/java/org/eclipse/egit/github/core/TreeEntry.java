@@ -162,4 +162,15 @@ public class TreeEntry implements Serializable {
 		this.url = url;
 		return this;
 	}
+
+    @Override
+    public String toString() {
+        return "TreeEntry [size=" + size + ", mode=" + mode + ", path=" + path
+                + ", sha=" + sha + ", type=" + type + ", url=" + url
+                + ", getSize()=" + getSize() + ", getMode()=" + getMode()
+                + ", getPath()=" + getPath() + ", getSha()=" + getSha()
+                + ", getType()=" + getType() + ", getUrl()=" + getUrl() + "]";
+    }
+
+
 }

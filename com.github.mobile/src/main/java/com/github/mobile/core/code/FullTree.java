@@ -23,8 +23,10 @@ import android.text.TextUtils;
 import com.github.mobile.core.commit.CommitUtils;
 import com.github.mobile.core.ref.RefUtils;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
 
 import org.eclipse.egit.github.core.Reference;
@@ -32,7 +34,8 @@ import org.eclipse.egit.github.core.Tree;
 import org.eclipse.egit.github.core.TreeEntry;
 
 /**
- * {@link Tree} with additional information
+ * {@link Tree} with additional information<br>
+ * 带有附加信息的树
  */
 public class FullTree {
 
@@ -73,6 +76,13 @@ public class FullTree {
         public int compareTo(Entry another) {
             return CASE_INSENSITIVE_ORDER.compare(name, another.name);
         }
+
+        @Override
+        public String toString() {
+            return "Entry [parent=" + parent + ", entry=" + entry + ", name="
+                    + name + "]";
+        }
+
     }
 
     /**
@@ -151,8 +161,45 @@ public class FullTree {
                 }
             }
         }
+
+
+        @Override
+        public String toString() {
+            return "文件夹[" +folders+ ", files:" + printFile(files) + "]";
+        }
+
+        /**
+         * 打印files
+         * @return
+         */
+        public String printFile(Map<String, Entry> map){
+            Set<String> keySet = map.keySet();
+            StringBuilder sb = new StringBuilder();
+            for(Iterator<String> iter = keySet.iterator();iter.hasNext();){
+                String key = iter.next();
+                long size = map.get(key).entry.getSize();
+                sb.append(key+"="+size+",");
+            }
+            return sb.toString();
+        }
+        /**
+         * 打印files
+         * @return
+         */
+        public String printMapF(Map<String, Folder> map){
+            Set<String> keySet = map.keySet();
+            StringBuilder sb = new StringBuilder();
+            for(Iterator<String> iter = keySet.iterator();iter.hasNext();){
+                String key = iter.next();
+                Entry value = map.get(key);
+                sb.append(key+"="+value).append("\n");
+            }
+            return sb.toString();
+        }
+
     }
 
+    //====================================================
     /**
      * Tree
      */
@@ -190,4 +237,12 @@ public class FullTree {
             for (TreeEntry entry : entries)
                 root.add(entry);
     }
+
+    @Override
+    public String toString() {
+        return "FullTree [tree=" + tree + ", root=" + root + ", reference="
+                + reference + ", branch=" + branch + "]";
+
+    }
+
 }
