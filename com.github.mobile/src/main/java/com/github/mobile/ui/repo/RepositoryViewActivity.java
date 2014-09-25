@@ -24,14 +24,18 @@ import static com.github.mobile.util.TypefaceUtils.ICON_CODE;
 import static com.github.mobile.util.TypefaceUtils.ICON_COMMIT;
 import static com.github.mobile.util.TypefaceUtils.ICON_ISSUE_OPEN;
 import static com.github.mobile.util.TypefaceUtils.ICON_NEWS;
+
+import org.eclipse.egit.github.core.Repository;
+import org.eclipse.egit.github.core.User;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.view.Menu;
-import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.github.kevinsawicki.wishlist.ViewUtils;
 import com.github.mobile.Intents.Builder;
@@ -47,12 +51,9 @@ import com.github.mobile.core.repo.UnstarRepositoryTask;
 import com.github.mobile.ui.TabPagerActivity;
 import com.github.mobile.ui.user.UserViewActivity;
 import com.github.mobile.util.AvatarLoader;
+import com.github.mobile.util.ShareUtils;
 import com.github.mobile.util.ToastUtils;
 import com.google.inject.Inject;
-import com.github.mobile.util.ShareUtils;
-
-import org.eclipse.egit.github.core.Repository;
-import org.eclipse.egit.github.core.User;
 
 /**
  * Activity to view a repository<br>
@@ -60,6 +61,8 @@ import org.eclipse.egit.github.core.User;
  */
 public class RepositoryViewActivity extends
         TabPagerActivity<RepositoryPagerAdapter> {
+
+    private static final String TAG = "RepositoryViewActivity";
 
     /**
      * Create intent for this activity
@@ -85,7 +88,7 @@ public class RepositoryViewActivity extends
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        //在createIntent时将repository加入到了此Activity,故在此可获取repository以便显示
         repository = getSerializableExtra(EXTRA_REPOSITORY);
 
         loadingBar = finder.find(id.pb_loading);
@@ -150,6 +153,7 @@ public class RepositoryViewActivity extends
      */
     @Override
     public boolean onSearchRequested() {
+        Log.i(TAG,"=============onSearchRequested=================");
         if (pager.getCurrentItem() == 1) {
             Bundle args = new Bundle();
             args.putSerializable(EXTRA_REPOSITORY, repository);
@@ -239,6 +243,9 @@ public class RepositoryViewActivity extends
         }
     }
 
+    /**
+     * 移除星标或加注星标
+     */
     private void starRepository() {
         if (isStarred)
             new UnstarRepositoryTask(this, repository) {
@@ -298,6 +305,9 @@ public class RepositoryViewActivity extends
         }.execute();
     }
 
+    /**
+     * 共享repository
+     */
     private void shareRepository() {
         String repoUrl = repository.getHtmlUrl();
         if (TextUtils.isEmpty(repoUrl))

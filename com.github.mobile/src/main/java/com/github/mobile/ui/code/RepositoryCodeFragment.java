@@ -99,13 +99,27 @@ public class RepositoryCodeFragment extends DialogFragment implements
 
     private RefDialog dialog;
 
+    /**
+     * 在此取得要显示的repository
+     */
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
 
+        /**
+         * 获取repository数据的路径：
+         * ①：在RepositoryViewActivity的createIntent时便将repository加入到了Activity:
+         *  add(EXTRA_REPOSITORY, repository)
+         * ②：在RepositoryViewActivity的createAdapter中，创建了RepositoryPagerAdapter,
+         *  但此Adapter中的每一个pager都是一个Fragment
+         * ③：在Fragment的onAttach中，Activity为RepositoryViewActivity,所以能获取在第一步加入到Activity的repository
+         */
         repository = getSerializableExtra(EXTRA_REPOSITORY);
     }
 
+    /**
+     * 在此更新repository树
+     */
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);

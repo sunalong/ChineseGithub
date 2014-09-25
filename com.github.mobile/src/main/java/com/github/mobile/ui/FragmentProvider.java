@@ -18,13 +18,14 @@ package com.github.mobile.ui;
 import com.actionbarsherlock.app.SherlockFragment;
 
 /**
- * Provides a fragment
+ * Provides a fragment<br>
+ * 提供一个Fragment
  */
 public interface FragmentProvider {
 
     /**
-     * Get selected fragment
-     *
+     * Get selected fragment<br>
+     * 获取被选择的Fragment
      * @return fragment
      */
     SherlockFragment getSelected();

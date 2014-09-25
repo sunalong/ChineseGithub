@@ -166,7 +166,6 @@ public class RepositoryListFragment extends ItemListFragment<Repository>
         Repository repo = (Repository) list.getItemAtPosition(position);
         if (recentRepos != null)//将被点击的recpsitory加入到最近浏览过的repository
             recentRepos.add(repo);
-
         startActivityForResult(RepositoryViewActivity.createIntent(repo),
                 REPOSITORY_VIEW);
     }
