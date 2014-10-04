@@ -65,4 +65,13 @@ public class Blob implements Serializable {
 		this.encoding = encoding;
 		return this;
 	}
+
+    @Override
+    public String toString() {
+        return "Blob [content=" + content + ", encoding=" + encoding
+                + ", getContent()=" + getContent() + ", getEncoding()="
+                + getEncoding() + "]";
+    }
+
+
 }

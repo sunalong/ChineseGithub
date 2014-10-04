@@ -20,6 +20,7 @@ import static org.eclipse.egit.github.core.client.IGitHubConstants.CHARSET_UTF8;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -37,6 +38,8 @@ import org.eclipse.egit.github.core.util.EncodingUtils;
 public class SourceEditor {
 
     private static final String URL_PAGE = "file:///android_asset/source-editor.html";
+
+    private static final String TAG = "SourceEditor";
 
     private final WebView view;
 
@@ -62,8 +65,10 @@ public class SourceEditor {
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 if (URL_PAGE.equals(url)) {
                     view.loadUrl(url);
+                    Log.i(TAG,"shouldOverrideUrlLoading:"+url);
                     return false;
                 } else {
+                    Log.i(TAG,"startActivity:"+url);
                     Context context = view.getContext();
                     Intent intent = new UrlLauncher(context).create(url);
                     context.startActivity(intent);
@@ -160,7 +165,9 @@ public class SourceEditor {
             final boolean encoded) {
         this.name = name;
         this.content = content;
+//        this.content = "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KCjxwcm9qZWN0IHhtbG5zPSJodHRwOi8vbWF2ZW4uYXBhY2hlLm9yZy9QT00vNC4wLjAiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiIHhzaTpzY2hlbWFMb2NhdGlvbj0iaHR0cDovL21hdmVuLmFwYWNoZS5vcmcvUE9NLzQuMC4wIGh0dHA6Ly9tYXZlbi5hcGFjaGUub3JnL21hdmVuLXY0XzBfMC54c2QiPgogIDxtb2RlbFZlcnNpb24+NC4wLjA8L21vZGVsVmVyc2lvbj4KCiAgPHBhcmVudD4KICAgIDxncm91cElkPm9yZy5zb25hdHlwZS5vc3M8L2dyb3VwSWQ+CiAgICA8YXJ0aWZhY3RJZD5vc3MtcGFyZW50PC9hcnRpZmFjdElkPgogICAgPHZlcnNpb24+NzwvdmVyc2lvbj4KICA8L3BhcmVudD4KCiAgPGdyb3VwSWQ+Y29tLmFjdGlvbmJhcnNoZXJsb2NrPC9ncm91cElkPgogIDxhcnRpZmFjdElkPnBhcmVudDwvYXJ0aWZhY3RJZD4KICA8cGFja2FnaW5nPnBvbTwvcGFja2FnaW5nPgogIDx2ZXJzaW9uPjQuNC4wPC92ZXJzaW9uPgoKICA8bmFtZT5BY3Rpb25CYXJTaGVybG9jayAoUGFyZW50KTwvbmFtZT4K";
         this.encoded = encoded;
+        Log.i(TAG,"setSource content:"+this.content);
         loadSource();
 
         return this;
@@ -168,10 +175,15 @@ public class SourceEditor {
 
     private void loadSource() {
         if (name != null && content != null)
-            if (markdown)
+            if (markdown){
                 view.loadData(content, "text/html", null);
-            else
+                Log.i(TAG,"loadData content:"+content);
+            }
+//                view.loadData("LyoKICogQ29weXJpZ2h0IDIwMTIgR2l0SHViIEluYy4KICoKICogTGljZW5z", "text/html", null);
+            else{
+                Log.i(TAG,"loadUrl URL_PAGE:"+URL_PAGE);
                 view.loadUrl(URL_PAGE);
+            }
     }
 
     /**
@@ -185,6 +197,7 @@ public class SourceEditor {
         String content = blob.getContent();
         if (content == null)
             content = "";
+        Log.i(TAG,"1content:"+content);
         boolean encoded = !TextUtils.isEmpty(content)
                 && ENCODING_BASE64.equals(blob.getEncoding());
         return setSource(name, content, encoded);

@@ -23,6 +23,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.github.mobile.accounts.AccountUtils;
 import com.github.mobile.core.commit.CommitMatch;
@@ -43,6 +44,8 @@ import org.eclipse.egit.github.core.User;
  * Helper to handle any custom activity launching done by selecting URLs
  */
 public class UrlLauncher {
+
+    private static final String TAG = "UrlLauncher";
 
     private final GistUrlMatcher gistMatcher = new GistUrlMatcher();
 
@@ -88,6 +91,7 @@ public class UrlLauncher {
         if (isValidLogin(login))
             return createUserIntent(login);
 
+//        Log.i(TAG,"uri:"+Uri.parse(uri));
         Intent intent = new Intent(ACTION_VIEW, Uri.parse(uri));
         intent.addCategory(CATEGORY_BROWSABLE);
         return intent;

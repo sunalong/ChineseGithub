@@ -61,7 +61,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.util.EncodingUtils;
 
 /**
- * Activity to view a file on a branch
+ * Activity to view a file on a branch<br>
+ * 展示高亮代码的Activity
  */
 public class BranchFileViewActivity extends BaseActivity implements
         LoaderCallbacks<CharSequence> {
@@ -127,6 +128,7 @@ public class BranchFileViewActivity extends BaseActivity implements
 
         setContentView(layout.commit_file_view);
 
+        //获取在createIntent时传入到数据
         repo = getSerializableExtra(EXTRA_REPOSITORY);
         sha = getStringExtra(EXTRA_BASE);
         path = getStringExtra(EXTRA_PATH);
@@ -231,6 +233,7 @@ public class BranchFileViewActivity extends BaseActivity implements
 
         if (!TextUtils.isEmpty(rendered)) {
             renderedMarkdown = rendered.toString();
+            Log.i(TAG,"renderedMarkdown:"+renderedMarkdown);
             if (markdownItem != null)
                 markdownItem.setEnabled(true);
             editor.setMarkdown(true).setSource(file, renderedMarkdown, false);
@@ -253,12 +256,16 @@ public class BranchFileViewActivity extends BaseActivity implements
 
         String markdown = new String(
                 EncodingUtils.fromBase64(blob.getContent()));
+        Log.i(TAG,"markdown:"+markdown);
         Bundle args = new Bundle();
         args.putCharSequence(ARG_TEXT, markdown);
         args.putSerializable(ARG_REPO, repo);
         getSupportLoaderManager().restartLoader(0, args, this);
     }
 
+    /**
+     * 加载内容 代码内容，编码等
+     */
     private void loadContent() {
         ViewUtils.setGone(loadingBar, false);
         ViewUtils.setGone(codeView, true);
@@ -271,15 +278,17 @@ public class BranchFileViewActivity extends BaseActivity implements
 
                 BranchFileViewActivity.this.blob = blob;
 
+//                Log.i(TAG, "Blob:" + blob);
                 if (markdownItem != null)
                     markdownItem.setEnabled(true);
 
-                if (isMarkdownFile
-                        && PreferenceUtils.getCodePreferences(
-                                BranchFileViewActivity.this).getBoolean(
-                                RENDER_MARKDOWN, true))
+                if (isMarkdownFile&& PreferenceUtils.getCodePreferences(BranchFileViewActivity.this).getBoolean( RENDER_MARKDOWN, true))
+                {
+                    Log.i(TAG,"loadMarkdown");
                     loadMarkdown();
+                }
                 else {
+                    Log.i(TAG,"setMarkdown");
                     ViewUtils.setGone(loadingBar, true);
                     ViewUtils.setGone(codeView, false);
 

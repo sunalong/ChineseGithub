@@ -349,6 +349,19 @@
                 <action android:name="com.github.mobile.branch.file.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW"/>
+                
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ui.ref.CopyOfBranchFileViewActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" >
+            <intent-filter>
+                <action android:name="com.github.mobile.copyof.branch.file.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <action android:name="android.intent.action.VIEW"/>
+                
             </intent-filter>
         </activity>
 

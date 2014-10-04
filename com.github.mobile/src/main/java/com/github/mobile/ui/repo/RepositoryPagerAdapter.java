@@ -108,7 +108,8 @@ public class RepositoryPagerAdapter extends FragmentPagerAdapter {
 
     /**
      * Pass back button pressed event down to fragments
-     *
+     * 返回键操作，回退到上一级父目录中
+     * 在RepositoryViewActivity中的onBackPressed中被调用
      * @return true if handled, false otherwise
      */
     public boolean onBackPressed() {

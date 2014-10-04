@@ -66,8 +66,8 @@ public class DataService extends GitHubService {
 	}
 
 	/**
-	 * Get blob for given SHA-1
-	 *
+	 * Get blob for given SHA-1<br>
+	 * 根据给定的SHA获取blob
 	 * @param repository
 	 * @param sha
 	 * @return blob

@@ -18,10 +18,16 @@ package com.github.mobile.ui.code;
 import static android.app.Activity.RESULT_OK;
 import static com.github.mobile.Intents.EXTRA_REPOSITORY;
 import static com.github.mobile.RequestCodes.REF_UPDATE;
+
+import java.util.LinkedList;
+
+import org.eclipse.egit.github.core.Reference;
+import org.eclipse.egit.github.core.Repository;
+import org.eclipse.egit.github.core.service.DataService;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -57,12 +63,6 @@ import com.github.mobile.ui.ref.RefDialogFragment;
 import com.github.mobile.util.ToastUtils;
 import com.github.mobile.util.TypefaceUtils;
 import com.google.inject.Inject;
-
-import java.util.LinkedList;
-
-import org.eclipse.egit.github.core.Reference;
-import org.eclipse.egit.github.core.Repository;
-import org.eclipse.egit.github.core.service.DataService;
 
 /**
  * Fragment to display a repository's source code tree<br>
@@ -285,7 +285,9 @@ public class RepositoryCodeFragment extends DialogFragment implements
 
     /**
      * Back up the currently viewed folder to its parent<br>
-     * 返回键操作：回退当前view文件夹到其父文件夹
+     * 返回键操作：回退当前view文件夹到其父文件夹<br>
+     * 在RepositoryPagerAdapter中的onBackPressed中被调用<br>
+     * 然后在RepositoryViewActivity中的onBackPressed中被调用
      * @return true if directory changed, false otherwise
      */
     public boolean onBackPressed() {
@@ -353,13 +355,15 @@ public class RepositoryCodeFragment extends DialogFragment implements
             return;
 
         if (entry instanceof Folder){
-            Log.i(TAG,"点击的是文件夹tree:"+tree);
-            Log.i(TAG,"点击的是文件夹(Folder) entry:"+(Folder) entry);
+//            Log.i(TAG,"点击的是文件夹tree:"+tree);
+//            Log.i(TAG,"点击的是文件夹(Folder) entry:"+(Folder) entry);
             setFolder(tree, (Folder) entry);
         }
         else{
-            Log.i(TAG,"repository:"+repository);
-            Log.i(TAG,"Tree:"+tree);
+//            Log.i(TAG,"repository:"+repository);
+//            Log.i(TAG,"Tree:"+tree);
+//            startActivity(CopyOfBranchFileViewActivity.createIntent(repository,
+//                    tree.branch, entry.entry.getPath(), entry.entry.getSha()));
             startActivity(BranchFileViewActivity.createIntent(repository,
                     tree.branch, entry.entry.getPath(), entry.entry.getSha()));
 

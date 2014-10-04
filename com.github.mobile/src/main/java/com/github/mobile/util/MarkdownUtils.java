@@ -28,7 +28,8 @@ public class MarkdownUtils {
 
   /**
    * Is the the given file name a Markdown file?
-   *
+   *  判断文件是否是一个Markdown文件：
+   *  若文件后缀与MARKDOWN_EXTENSIONS中的值相匹配，则返回true
    * @param name
    * @return true if the name has a markdown extension, false otherwise
    */

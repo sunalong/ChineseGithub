@@ -26,7 +26,8 @@ import org.eclipse.egit.github.core.Repository;
 import org.eclipse.egit.github.core.service.DataService;
 
 /**
- * Task to refresh a blob
+ * Task to refresh a blob<br>
+ * 刷新Blob的Task
  */
 public class RefreshBlobTask extends AuthenticatedUserTask<Blob> {
 

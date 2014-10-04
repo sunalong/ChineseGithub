@@ -84,7 +84,8 @@ public class CodeTreeAdapter extends MultiTypeAdapter {
 
     /**
      * Set root folder to display
-     *
+     * 供外界调用，将item中的值与类型设置好，如：adapter.getWrappedAdapter().setItems(folder);
+     * 在此方法中调用方法MultiTypeAdapter中的addItems，而此方法中有notifyDataSetChanged
      * @param root
      */
     public void setItems(final Folder root) {
